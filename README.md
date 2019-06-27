@@ -13,7 +13,7 @@ My original rssbot script was written back in 2007, and used python 2.4 (at the 
 This rssbot2 script is written in python 3.6, and uses the MySQL Connector library to interact with mysql. 
 https://dev.mysql.com/doc/connector-python/en/connector-python-introduction.html
 
-The other main difference between rssbot and rssbot2 is that now in pythn3 (or more accurately, since python 2.7), unicode support has been fixed to better handle character sets that otherwise would choke my old rssbot script, or cause unicode parsing exceptions, which was very frustrating back in 2007.
+The other main difference between rssbot and rssbot2 is that now in python3 (or more accurately, since python 2.7), unicode support has been fixed to better handle character sets that otherwise would choke my old rssbot script, or cause unicode parsing exceptions, which was very frustrating back in 2007.
 
 ## RSS Reader Interface development
 
