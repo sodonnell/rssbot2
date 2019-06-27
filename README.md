@@ -23,12 +23,21 @@ This allows for the development of a web interface that displays the latest link
 
 While some/most consider RSS to be a DOA technology in 2019, the fact remains that there are still hundreds of thousands of web sites that still support syndication via RSS/ATOM format. 
 
+# Requirements
+
+* feedparser
+* mysql-connector-python
+
+```
+pip3 install feedparser mysql-connector-python
+```
+
 # Installation
 
 It's pretty straight-forward.
 
 1) Clone this repo.
-2) Rename/Edit the config file to define your db credentials and schema to use. It can be a new schema if you'd prefer to create it via setup.py.
+2) Make setup.py executable.
 3) Run the setup.py script.
 
 Example:
@@ -36,8 +45,6 @@ Example:
 ```
 git clone https://github.com/sodonnell/rssbot2.git
 cd rssbot2
-mv example.config.py config.py
-# edit the config to fit your db settings
-vim config.py
-python3 setup.py
+chmod +x setup.py
+./setup.py
 ```

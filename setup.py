@@ -55,7 +55,18 @@ class setup:
         cursor.close()
         self.conn.close()
 
-# run setup class
+# let user define db credentials via input
+config.host = input("Enter your database hostname/ip: ")
+config.username = input("Enter your database user name: ")
+config.password = input("Enter your database user password: ")
+config.database = input("Enter your database schema name to create, or use existing: ")
+
+# write config.py file programmaticlly
+config_file = open("config.py","w+")
+config_file.write("config = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n'raise_on_warnings': True\n}" % config.username config.password config.host config.database)
+config_file.close()
+
+# run setup class.
 setup = setup()
 setup.create_database()
 setup.create_tables()
