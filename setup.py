@@ -31,10 +31,10 @@ class setup:
     def create_database(self):
         cursor = self.conn.cursor()
         try:
-            cursor.execute("CREATE DATABASE IF NOT EXISTS . config.database)
+            cursor.execute("CREATE DATABASE IF NOT EXISTS ". config.database)
         except mysql.connector.Error as err:
-            print("Failed creating database: ". config.database .") 
-            print ("Error output: ". format(err))
+            print("Failed creating database: ". config.database) 
+            print("Error output: ". format(err))
             exit(1)
 
     def create_tables(self):
@@ -55,7 +55,7 @@ class setup:
         cursor.close()
         self.conn.close()
 
-
+# run setup class
 setup = setup()
 setup.create_database()
 setup.create_tables()
