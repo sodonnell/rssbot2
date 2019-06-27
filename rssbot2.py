@@ -58,30 +58,21 @@ class rssbot2:
         cursor.close()
         print("Feed %d de-activated.", id)
         
-    def add_link(self,pid,title,link,pubdate=''):
-        title = title.encode('utf-8')
-        title = title.replace("'","\'")
-        title = title.replace('"','\"')
+    def add_link(self,feed_id,title,link):
         title = title.replace(';','')
-        link = link.encode('utf-8')
         link = link.replace(';','')
         cursor = self.conn.cursor()
-        if pubdate:
-            sql = "INSERT IGNORE INTO rssbot2_archive ( pid, title, link, feed_id, pubdate ) VALUES (%s,%s,%s,%s,%s)"
-            cursor.execute(sql, (pid,title,link,pid,pubdate))
-        else:
-            sql = "INSERT IGNORE INTO rssbot2_archive ( pid, title, link, feed_id) VALUES (%s,%s,%s,%s)"
-            cursor.execute(sql, (pid,title,link,pid))
+
+        sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s)"
+        cursor.execute(sql, (title,link,feed_id))
 
         self.conn.commit()
         id = cursor.lastrowid
         cursor.close()
         return id
 
-    def add_link_if_not_exists(self,pid,title,link,pubdate=''):
-        title = title.encode('utf-8')
+    def add_link_if_not_exists(self,feed_id,title,link,pubdate=''):
         title = title.replace(';','')
-        link = link.encode('utf-8')
         link = link.replace(';','')
         cursor = self.conn.cursor()
         sql = "SELECT count(id) AS existing_id FROM rssbot2_archive WHERE link = '%s'"
@@ -92,12 +83,8 @@ class rssbot2:
         if self.existing_link.existing_id < 1:
             cursor = self.conn.cursor()
 
-            if pubdate:
-                sql = "INSERT IGNORE INTO rssbot2_archive ( pid, title, link, feed_id, pubdate ) VALUES (%s,%s,%s,%s,%s)"
-                cursor.execute(sql, (pid,title,link,pid,pubdate))
-            else:
-                sql = "INSERT IGNORE INTO rssbot2_archive ( pid, title, link, feed_id, pubdate) VALUES (%s,%s,%s,%s,NOW())"
-                cursor.execute(sql, (pid,title,link,pid))
+            sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s,)"
+            cursor.execute(sql, (title,link,feed_id))
 
             self.conn.commit()
             id = cursor.lastrowid
