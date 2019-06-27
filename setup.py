@@ -46,7 +46,7 @@ class setup:
                 cursor.execute(table_description)
             except mysql.connector.Error as err:
                 if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-                    print("already exists.")
+                    print(table_name." already exists.")
                 else:
                     print(err.msg)
             else:
