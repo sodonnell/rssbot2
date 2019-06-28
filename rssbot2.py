@@ -16,15 +16,15 @@ __copyright__ = "Copyright 2019, Sean O'Donnell"
 
 import mysql.connector, feedparser, config
 
-class rssbot:
+class rssbot2:
     def __init__(self):
         # SET DEFAULT OBJECT PARAMS
         self.title = "rssbot2"
         self.set_root_url("http://www.rssbot.org/")
         self.set_useragent("rssbot/2.0 +%s" % self.root_url)
         self.set_max_feeds(250)
-        self.db_connect()
-        self.get_feeds()
+        #self.db_connect()
+        #self.get_feeds()
         self.debug = 1
         
     def set_root_url(self,url):
@@ -41,7 +41,7 @@ class rssbot:
         feedparser.USER_AGENT = agent
         
     def db_connect(self):
-        self.conn = mysql.connector.connect(**config)
+        self.conn = mysql.connector.connect(host=config.db['host'],user=config.db['user'],password=config.db['password'],database=config.db['database'])
         return self.conn
 
     def get_feeds(self):

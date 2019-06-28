@@ -64,7 +64,7 @@ database = input("Enter your database schema name to create, or use existing: ")
 # write config.py file programmaticlly
 # old-school string type handler. need to modernize this using format() or json encoding.
 config_file = open("config.py","w+")
-config_file.write("config = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n\t'raise_on_warnings': True\n}\n" % (username, password, host, database))
+config_file.write("db = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n\t'raise_on_warnings': True\n}\n" % (username, password, host, database))
 config_file.close()
 
 # @todo add sanity checks before proceeding to setup class procedures.
