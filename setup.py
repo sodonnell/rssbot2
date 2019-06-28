@@ -31,6 +31,7 @@ class setup:
     def create_database(self,schema):
         cursor = self.conn.cursor()
         try:
+            print "CREATE DATABASE IF NOT EXISTS {} ". format(schema), end='')
             cursor.execute("CREATE DATABASE IF NOT EXISTS {} ". format(schema))
         except mysql.connector.Error as err:
             print("Failed creating database {}: ". format(schema), end='') 
