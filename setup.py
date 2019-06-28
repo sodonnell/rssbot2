@@ -68,6 +68,6 @@ config_file.close()
 
 # @todo add sanity checks before proceeding to setup class procedures.
 # run setup class.
-setup = setup(["host": host, "database": database, "user": username, "password": password])
+setup = setup({"host": host, "database": database, "user": username, "password": password})
 setup.create_database()
 setup.create_tables()
