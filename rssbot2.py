@@ -33,7 +33,7 @@ class rssbot2:
 
     def set_max_feeds(self,int):
         # Maximum number of RSS Feeds to scour per-session (250 max suggested)
-        self.maxfeeds = int
+        self.max_feeds = int
 
     def set_useragent(self,agent):
         # define a custom user agent for this application
@@ -45,9 +45,9 @@ class rssbot2:
         return self.conn
 
     def get_feeds(self):
-        sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, %s "
+        sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, {} "
         cursor = self.conn.cursor()
-        cursor.execute(sql, self.maxfeeds)
+        cursor.execute(sql, format(self.max_feeds))
         self.feeds = cursor.fetchall()
         self.feeds_count = cursor.rowcount
         cursor.close()
