@@ -55,7 +55,7 @@ class rssbot2:
     def deactivate_feed(self,id):
         sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = {}". format(id)
         cursor = self.conn.cursor()
-        cursor.execute()
+        cursor.execute(sql)
         cursor.close()
         print("Feed %d de-activated.", id)
         
@@ -64,8 +64,8 @@ class rssbot2:
         link = link.replace(';','')
         cursor = self.conn.cursor()
 
-        sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s)"
-        cursor.execute(sql, (title,link,feed_id))
+        sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s)" % (title,link,feed_id)
+        cursor.execute(sql)
 
         self.conn.commit()
         id = cursor.lastrowid
@@ -76,16 +76,16 @@ class rssbot2:
         title = title.replace(';','')
         link = link.replace(';','')
         cursor = self.conn.cursor()
-        sql = "SELECT count(id) AS existing_id FROM rssbot2_archive WHERE link = '%s'"
-        cursor.execute(sql,link)
+        sql = "SELECT count(id) AS existing_id FROM rssbot2_archive WHERE link = '%s'" % (link)
+        cursor.execute(sql)
         self.existing_link = cursor.fetchall()
         cursor.close()
 
         if self.existing_link.existing_id < 1:
             cursor = self.conn.cursor()
 
-            sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s,)"
-            cursor.execute(sql, (title,link,feed_id))
+            sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s,)" % (title,link,feed_id)
+            cursor.execute(sql)
 
             self.conn.commit()
             id = cursor.lastrowid
