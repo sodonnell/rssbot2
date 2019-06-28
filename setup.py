@@ -31,9 +31,9 @@ class setup:
     def create_database(self,schema):
         cursor = self.conn.cursor()
         try:
-            cursor.execute("CREATE DATABASE IF NOT EXISTS ". schema)
+            cursor.execute("CREATE DATABASE IF NOT EXISTS ". format(schema))
         except mysql.connector.Error as err:
-            print("Failed creating database: ". schema) 
+            print("Failed creating database: ". format(schema)) 
             print("Error output: ". format(err))
             exit(1)
 
@@ -46,7 +46,7 @@ class setup:
                 cursor.execute(table_description)
             except mysql.connector.Error as err:
                 if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-                    print("The table already exists")
+                    print("The table ".format(table_name)." already exists")
                 else:
                     print(err.msg)
             else:
