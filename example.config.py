@@ -2,11 +2,16 @@
 #
 # config.py
 #
-# The rssbot2 database configuration.
+# The rssbot2 database configuration file.
 #
-# Rename this file to: config.py
+# The actual config.py file is generated automatically via the setup.py script. 
+# This script is just an example of the output format that should be generated 
+# from setup.py.
 #
-config = {
+# In a pinch, if setup.py fails or just sucks, you can manually define your
+# config.py file using this list key/value pair format and naming convention.
+#
+db = {
   'user': 'myusername',
   'password': 'mypassword',
   'host': 'localhost',
