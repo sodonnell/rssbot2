@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
-import rssbot2
+from rssbot2 import rssbot
 
-print("Agent: {}". format(rssbot2.agent))
+rssbot = rssbot()
+
+print("Title: {}". format(rssbot.title))
+print("Agent: {}". format(rssbot.user_agent))

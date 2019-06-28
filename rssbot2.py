@@ -16,7 +16,7 @@ __copyright__ = "Copyright 2019, Sean O'Donnell"
 
 import mysql.connector, feedparser, config
 
-class rssbot2:
+class rssbot:
     def __init__(self):
         # SET DEFAULT OBJECT PARAMS
         self.title = "rssbot2"
@@ -42,7 +42,7 @@ class rssbot2:
         
     def db_connect(self):
         self.conn = mysql.connector.connect(**config)
-        #return self.conn
+        return self.conn
 
     def get_feeds(self):
         sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, %s "
