@@ -63,8 +63,9 @@ password = input("Enter your database user password: ")
 database = input("Enter your database schema name to create, or use existing: ")
 
 # write config.py file programmaticlly
+config_str = "config = {\n\t'user': '{0}',\n\t'password': '{1}',\n\t'host': '{2}',\n\t'database': '{3}',\n\t'raise_on_warnings': True\n}\n". format(username, password, host, database)
 config_file = open("config.py","w+")
-config_file.write("config = {\n\t'user': '{0}',\n\t'password': '{1}',\n\t'host': '{2}',\n\t'database': '{3}',\n\t'raise_on_warnings': True\n}\n". format(username, password, host, database))
+config_file.write(config_str)
 config_file.close()
 
 # @todo add sanity checks before proceeding to setup class procedures.
