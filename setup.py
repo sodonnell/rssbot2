@@ -28,12 +28,12 @@ class setup:
     def __init__(self,creds):
         self.conn = mysql.connector.connect(**creds)
 
-    def create_database(self):
+    def create_database(self,schema):
         cursor = self.conn.cursor()
         try:
-            cursor.execute("CREATE DATABASE IF NOT EXISTS ". config.database)
+            cursor.execute("CREATE DATABASE IF NOT EXISTS ". schema)
         except mysql.connector.Error as err:
-            print("Failed creating database: ". config.database) 
+            print("Failed creating database: ". schema) 
             print("Error output: ". format(err))
             exit(1)
 
@@ -69,5 +69,5 @@ config_file.close()
 # @todo add sanity checks before proceeding to setup class procedures.
 # run setup class.
 setup = setup({"host": host, "database": database, "user": username, "password": password})
-setup.create_database()
+setup.create_database(database)
 setup.create_tables()
