@@ -47,7 +47,7 @@ class rssbot2:
     def get_feeds(self):
         sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, {} ".format(self.max_feeds)
         cursor = self.conn.cursor()
-        cursor.execute(sql, self.max_feeds)
+        cursor.execute(sql)
         self.feeds = cursor.fetchall()
         self.feeds_count = cursor.rowcount
         cursor.close()
