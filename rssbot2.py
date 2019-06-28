@@ -45,7 +45,7 @@ class rssbot2:
         return self.conn
 
     def get_feeds(self):
-        sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, {} "
+        sql = format("SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, {} ", end='')
         cursor = self.conn.cursor()
         cursor.execute(sql, self.max_feeds)
         self.feeds = cursor.fetchall()
