@@ -1,6 +1,18 @@
-# rssbot2
+***rssbot2***
 
-A modern version of my ancient rssbot script, written in python.
+A modern version of my ancient rssbot module, written in python3.
+
+Table of Contents:
+- [Overview](#Overview)
+  - [rssbot vs rssbot2](#rssbot-vs-rssbot2)
+  - [RSS Reader Interface development](#RSS-Reader-Interface-development)
+  - [RSS is Dead, though, so why bother?](#RSS-is-Dead-though-so-why-bother)
+- [Requirements](#Requirements)
+- [Installation](#Installation)
+- [Usage Examples](#Usage-Examples)
+  - [crontab](#crontab)
+  - [django integration](#django-integration)
+  - [one-off commands/scripts](#one-off-commandsscripts)
 
 # Overview
 
@@ -25,6 +37,7 @@ While some/most consider RSS to be a DOA technology in 2019, the fact remains th
 
 # Requirements
 
+* Python >= 3.6
 * feedparser
 * mysql-connector-python
 
@@ -39,9 +52,7 @@ It's pretty straight-forward.
 1) Clone this repo.
 2) Make setup.py executable.
 3) Run the setup.py script.
-4) Enter the db-config information during setup process.
-
-Example:
+4) Enter the database configuration information during the setup process.
 
 ```
 git clone https://github.com/sodonnell/rssbot2.git
@@ -49,3 +60,11 @@ cd rssbot2
 chmod +x setup.py
 ./setup.py
 ```
+
+# Usage Examples
+
+## crontab
+
+## django integration
+
+## one-off commands/scripts
