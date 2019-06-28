@@ -25,8 +25,8 @@ TABLES['rssbot2_archive'] = (
     ") ENGINE=InnoDB")
 
 class setup:
-    def __init__(self):
-        self.conn = mysql.connector.connect(**config)
+    def __init__(self,creds):
+        self.conn = mysql.connector.connect(**creds)
 
     def create_database(self):
         cursor = self.conn.cursor()
@@ -55,19 +55,19 @@ class setup:
         self.conn.close()
 
 # let user define db credentials via input
-config = []
-config.host = input("Enter your database hostname/ip: ")
-config.username = input("Enter your database user name: ")
-config.password = input("Enter your database user password: ")
-config.database = input("Enter your database schema name to create, or use existing: ")
+
+host = input("Enter your database hostname/ip: ")
+username = input("Enter your database user name: ")
+password = input("Enter your database user password: ")
+database = input("Enter your database schema name to create, or use existing: ")
 
 # write config.py file programmaticlly
 config_file = open("config.py","w+")
-config_file.write("config = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n'raise_on_warnings': True\n}" % config.username, config.password, config.host, config.database)
+config_file.write("config = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n'raise_on_warnings': True\n}" % username, password, host, database)
 config_file.close()
 
 # @todo add sanity checks before proceeding to setup class procedures.
 # run setup class.
-setup = setup()
+setup = setup(["host": host, "database": database, "user": username, "password": password])
 setup.create_database()
 setup.create_tables()
