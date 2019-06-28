@@ -2,6 +2,4 @@
 
 import rssbot2
 
-rssbot = rssbot2()
-
-print("Agent: {}". format(rssbot.agent))
+print("Agent: {}". format(rssbot2.agent))
