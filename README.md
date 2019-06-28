@@ -39,6 +39,7 @@ It's pretty straight-forward.
 1) Clone this repo.
 2) Make setup.py executable.
 3) Run the setup.py script.
+4) Enter the db-config information during setup process.
 
 Example:
 
