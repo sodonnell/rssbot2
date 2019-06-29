@@ -45,7 +45,7 @@ class rssbot2:
         return self.conn
 
     def get_feeds(self):
-        sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, {}".format(self.max_feeds)
+        sql = "SELECT title, link, id FROM rssbot2_feeds WHERE active = 'Y' ORDER BY RAND() LIMIT 0, '{}'".format(self.max_feeds)
         cursor = self.conn.cursor()
         cursor.execute(sql)
         self.feeds = cursor.fetchall()
@@ -53,7 +53,7 @@ class rssbot2:
         cursor.close()
 
     def deactivate_feed(self,id):
-        sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = {}". format(id)
+        sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = '{}'". format(id)
         cursor = self.conn.cursor()
         cursor.execute(sql)
         cursor.close()
@@ -77,7 +77,8 @@ class rssbot2:
 
     def add_link(self,feed_id,title,link):
         cursor = self.conn.cursor()
-        sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s)" % (title,link,feed_id)
+        title = title.replace("'",r"\'")
+        sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES ('%s','%s','%s')" % (title,link,feed_id)
         cursor.execute(sql)
         self.conn.commit()
         id = cursor.lastrowid
@@ -93,8 +94,8 @@ class rssbot2:
 
         if self.existing_link.existing_id < 1:
             cursor = self.conn.cursor()
-
-            sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s,)" % (title,link,feed_id)
+            title = title.replace("'",r"\'")
+            sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES ('%s','%s','%s')" % (title,link,feed_id)
             cursor.execute(sql)
 
             self.conn.commit()
