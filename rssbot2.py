@@ -84,7 +84,8 @@ class rssbot2:
         cursor.close()
         return id
 
-    def add_link_if_not_exists(self,feed_id,title,link,pubdate=''):
+    #deprecated
+    def add_link_if_not_exists(self,feed_id,title,link):
         cursor = self.conn.cursor()
         sql = "SELECT count(id) AS existing_id FROM rssbot2_archive WHERE link = '%s'" % (link)
         cursor.execute(sql)
