@@ -64,7 +64,7 @@ class rssbot2:
         rss = feedparser.parse(link,referrer=self.root_url)
         if rss.feed.has_key('title'):
             cursor = self.conn.cursor()
-            sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ({0}},{1}},{2})". format(rss.feed.title,link,active)
+            sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ({0},{1},{2})". format(rss.feed.title,link,active)
             cursor.execute(sql)
             self.conn.commit()
             id = cursor.lastrowid
