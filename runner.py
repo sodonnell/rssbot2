@@ -24,10 +24,7 @@ if rssbot.feeds_count > 0:
                 for entry in rss.entries:
                     if entry.has_key('title') and entry.has_key('link'):
     
-                        if 'pubDate' in entry:
-                            id = rssbot.add_link_if_not_exists(feed[2],entry.title,entry.link,entry.pubDate)
-                        else:
-                            id = rssbot.add_link_if_not_exists(feed[2],entry.link)
+                        id = rssbot.add_link_if_not_exists(feed[2],entry.link)
 
                         try:
                             if id > 0:
