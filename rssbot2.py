@@ -59,14 +59,19 @@ class rssbot2:
         cursor.close()
         print("Feed %d de-activated.", id)
 
-    def add_feed(self,title,link,active):
-        cursor = self.conn.cursor()
-        sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES (%s,%s,%s)" % (title,link,active)
-        cursor.execute(sql)
-        self.conn.commit()
-        id = cursor.lastrowid
-        cursor.close()
-        return id
+    def add_feed(self,link,active='N'):
+        # get rss feed data via link
+        rss = feedparser.parse(%s,referrer=self.root_url) % (link)
+        if rss.feed.has_key('title'):
+            cursor = self.conn.cursor()
+            sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES (%s,%s,%s)" % (rss.feed.title,link,active)
+            cursor.execute(sql)
+            self.conn.commit()
+            id = cursor.lastrowid
+            cursor.close()
+            return id
+        else:
+            return 0
 
     def add_link(self,feed_id,title,link):
         cursor = self.conn.cursor()
