@@ -18,7 +18,7 @@ if rssbot.feeds_count > 0:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
         if rss.feed.has_key('title'):
             if rssbot.debug:
-                print "RSS Feed Title: %s" % rss.feed.title.encode('utf-8')
+                print("RSS Feed Title: ". rss.feed.title)
     
             if len(rss.entries) > 0:
                 for entry in rss.entries:
