@@ -34,9 +34,9 @@ if rssbot.feeds_count > 0:
                         try:
                             if id > 0:
                                 if rssbot.debug:
-                                    print("\nAdded Record (ID): %d") % id
-                                    print("\t"+ str(entry.title))
-                                    print("\t"+ str(entry.link))
+                                    print("\nAdded Record {}". format(id))
+                                    print(str(entry.title))
+                                    print(str(entry.link))
                                 k=k+1
                         except:
                             print("Exception thrown while processing item.")
@@ -48,4 +48,7 @@ if rssbot.feeds_count > 0:
         i=i+1
 
 rssbot.conn.close()
-print("\n-----\n\nProcessed %d feeds, %d items, and added %d new links to the database.") % (i,j,k)
+
+print("Processed feeds: {}". format(i))
+print("Processed items: {}". format(j))
+print("Added new links: {}". format(k))
