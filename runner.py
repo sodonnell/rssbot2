@@ -12,7 +12,7 @@ rssbot.db_connect()
 rssbot.get_feeds()
 
 if rssbot.feeds_count > 0:
-    print "Aggregating %d Feeds\n" % rssbot.feeds_count
+    print("Aggregating ". rssbot.feeds_count ." Feeds\n")
 
     for feed in rssbot.feeds:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
