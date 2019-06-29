@@ -11,6 +11,11 @@ print("Max Feeds: {}". format(rssbot.max_feeds))
 rssbot.db_connect()
 rssbot.get_feeds()
 
+# iteration cursors
+i=0
+j=0
+k=0
+
 if rssbot.feeds_count > 0:
     print("Aggregating {} Feeds". format(rssbot.feeds_count))
 
@@ -43,3 +48,4 @@ if rssbot.feeds_count > 0:
         i=i+1
 
 rssbot.conn.close()
+print("\n-----\n\nProcessed %d feeds, %d items, and added %d new links to the database.") % (i,j,k)
