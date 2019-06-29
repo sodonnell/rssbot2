@@ -66,6 +66,7 @@ class rssbot2:
             rss.feed.title = rss.feed.title.replace("'",r"\'")
             cursor = self.conn.cursor()
             sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES (%s,%s,%s)" % (rss.feed.title,link,active)
+            print("Query: {} ".format(sql), end='')
             cursor.execute(sql)
             self.conn.commit()
             id = cursor.lastrowid
