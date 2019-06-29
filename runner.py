@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import feedparser
 from rssbot2 import rssbot2
 
 rssbot = rssbot2()
