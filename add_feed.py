@@ -10,4 +10,9 @@ if active != "Y":
 
 rssbot = rssbot2()
 rssbot.db_connect()
-print(rssbot.add_feed(url,active))
+feed_id = rssbot.add_feed(url,active)
+
+if feed_id == 0:
+    print("Feed already exists in database. Command ignored.")
+else:
+    print("Feed successfully added to the database. ID: {}". format(id))
