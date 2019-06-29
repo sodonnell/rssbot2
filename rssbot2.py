@@ -58,23 +58,26 @@ class rssbot2:
         cursor.execute(sql)
         cursor.close()
         print("Feed %d de-activated.", id)
-        
-    def add_link(self,feed_id,title,link):
-        title = title.replace(';','')
-        link = link.replace(';','')
-        cursor = self.conn.cursor()
 
+    def add_feed(self,title,link,active):
+        cursor = self.conn.cursor()
+        sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES (%s,%s,%s)" % (title,link,active)
+        cursor.execute(sql)
+        self.conn.commit()
+        id = cursor.lastrowid
+        cursor.close()
+        return id
+
+    def add_link(self,feed_id,title,link):
+        cursor = self.conn.cursor()
         sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES (%s,%s,%s)" % (title,link,feed_id)
         cursor.execute(sql)
-
         self.conn.commit()
         id = cursor.lastrowid
         cursor.close()
         return id
 
     def add_link_if_not_exists(self,feed_id,title,link,pubdate=''):
-        title = title.replace(';','')
-        link = link.replace(';','')
         cursor = self.conn.cursor()
         sql = "SELECT count(id) AS existing_id FROM rssbot2_archive WHERE link = '%s'" % (link)
         cursor.execute(sql)
