@@ -61,7 +61,7 @@ class rssbot2:
 
     def add_feed(self,link,active='N'):
         # get rss feed data via link
-        rss = feedparser.parse(%s,referrer=self.root_url) % (link)
+        rss = feedparser.parse(feed,referrer=self.root_url)
         if rss.feed.has_key('title'):
             cursor = self.conn.cursor()
             sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES (%s,%s,%s)" % (rss.feed.title,link,active)
