@@ -21,7 +21,7 @@ class rssbot2:
         # SET DEFAULT OBJECT PARAMS
         self.title = "rssbot2"
         self.set_root_url("https://github.com/sodonnell/rssbot2/")
-        self.set_useragent("rssbot/2.0 - %s (Linux; Python/3.0;)" % self.root_url)
+        self.set_useragent("rssbot/2.0 +%s (Linux; Python/3.0;)" % self.root_url)
         self.set_max_feeds(250)
         self.debug = 1
         
