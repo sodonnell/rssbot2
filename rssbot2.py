@@ -20,11 +20,9 @@ class rssbot2:
     def __init__(self):
         # SET DEFAULT OBJECT PARAMS
         self.title = "rssbot2"
-        self.set_root_url("http://www.rssbot.org/")
-        self.set_useragent("rssbot/2.0 +%s" % self.root_url)
+        self.set_root_url("https://github.com/sodonnell/rssbot2/")
+        self.set_useragent("rssbot/2.0 (Linux; Python/3.0; %s)" % self.root_url)
         self.set_max_feeds(250)
-        #self.db_connect()
-        #self.get_feeds()
         self.debug = 1
         
     def set_root_url(self,url):
@@ -59,6 +57,13 @@ class rssbot2:
         cursor.close()
         print("Feed %d de-activated.", id)
 
+    def activate_feed(self,id):
+        sql = "UPDATE rssbot2_feeds SET active = 'Y' WHERE id = '{}'". format(id)
+        cursor = self.conn.cursor()
+        cursor.execute(sql)
+        cursor.close()
+        print("Feed %d activated.", id)
+
     def add_feed(self,link,active='N'):
         # get rss feed data via link
         rss = feedparser.parse(link,referrer=self.root_url)
@@ -83,24 +88,3 @@ class rssbot2:
         id = cursor.lastrowid
         cursor.close()
         return id
-
-    #deprecated
-    def add_link_if_not_exists(self,feed_id,title,link):
-        cursor = self.conn.cursor()
-        sql = "SELECT count(id) AS existing_id FROM rssbot2_archive WHERE link = '%s'" % (link)
-        cursor.execute(sql)
-        self.existing_link = cursor.fetchall()
-        cursor.close()
-
-        if self.existing_link.existing_id < 1:
-            cursor = self.conn.cursor()
-            title = title.replace("'",r"\'")
-            sql = "INSERT IGNORE INTO rssbot2_archive ( title, link, feed_id) VALUES ('%s','%s','%s')" % (title,link,feed_id)
-            cursor.execute(sql)
-
-            self.conn.commit()
-            id = cursor.lastrowid
-            cursor.close()
-            return id
-        else:
-            return 0
