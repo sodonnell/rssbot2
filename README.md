@@ -69,3 +69,11 @@ chmod +x setup.py
 ## django integration
 
 ## one-off commands/scripts
+
+The add_feed.py script is an interactive shell script that will prompt you to fill-in the blanks.
+
+```
+./add_feed.py
+```
+
+It will ask you to provide the RSS url, and whether or not the feed should be active. Eventually, this interactivity will be optionally supressed by command-line arguments.
