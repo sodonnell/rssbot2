@@ -24,7 +24,7 @@ class rssbot2:
         self.set_useragent("rssbot/2.0 +%s" % self.root_url)
         self.set_max_feeds(250)
         self.debug = 1
-        
+
     def set_root_url(self,url):
         # define the root URL for the rssbot.org webUI
         self.root_url = url
@@ -37,7 +37,7 @@ class rssbot2:
         # define a custom user agent for this application
         self.user_agent = agent
         feedparser.USER_AGENT = agent
-        
+
     def db_connect(self):
         self.conn = mysql.connector.connect(host=config.db['host'],user=config.db['user'],password=config.db['password'],database=config.db['database'])
         return self.conn

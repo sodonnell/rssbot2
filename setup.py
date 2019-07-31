@@ -2,8 +2,8 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-TABLES = {}
-TABLES['rssbot2_feeds'] = (
+DB_TABLES = {}
+DB_TABLES['rssbot2_feeds'] = (
     "CREATE TABLE IF NOT EXISTS `rssbot2_feeds` ("
     "  `id` int(11) PRIMARY KEY AUTO_INCREMENT,"
     "  `title` varchar(255) NOT NULL,"
@@ -13,7 +13,7 @@ TABLES['rssbot2_feeds'] = (
     "  CONSTRAINT unique_link UNIQUE (link)"
     ") ENGINE=InnoDB")
 
-TABLES['rssbot2_archive'] = (
+DB_TABLES['rssbot2_archive'] = (
     "CREATE TABLE IF NOT EXISTS `rssbot2_archive` ("
     "  `id` int(11) PRIMARY KEY AUTO_INCREMENT,"
     "  `title` varchar(255) NOT NULL,"
@@ -40,8 +40,8 @@ class setup:
 
     def create_tables(self):
         cursor = self.conn.cursor()
-        for table_name in TABLES:
-            table_description = TABLES[table_name]
+        for table_name in DB_TABLES:
+            table_description = DB_TABLES[table_name]
             try:
                 print("Creating table {}: ".format(table_name), end='')
                 cursor.execute(table_description)

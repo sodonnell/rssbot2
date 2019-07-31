@@ -10,6 +10,7 @@ if active != "Y":
 
 rssbot = rssbot2()
 rssbot.db_connect()
+
 feed_id = rssbot.add_feed(url,active)
 
 if feed_id == 0:

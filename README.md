@@ -1,8 +1,9 @@
-***rssbot2***
+# rssbot2
 
 A modern version of my ancient rssbot module, written in python3.
 
-Table of Contents:
+**Table of Contents:**
+- [rssbot2](#rssbot2)
 - [Overview](#Overview)
   - [rssbot vs rssbot2](#rssbot-vs-rssbot2)
   - [RSS Reader Interface development](#RSS-Reader-Interface-development)
