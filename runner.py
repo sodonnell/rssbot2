@@ -4,6 +4,18 @@ from rssbot2 import rssbot2
 
 rssbot = rssbot2()
 
+banner="""
+     ____  __________ ____        __ 
+    / __ \/ ___/ ___// __ )____  / /_
+   / /_/ /\__ \\__ \/ __  / __ \/ __/
+  / _, _/___/ /__/ / /_/ / /_/ / /_  
+ /_/ |_|/____/____/_____/\____/\__/ v2.0
+
+ A simple RSS Crawler written in python.
+
+"""
+print(banner)
+print("--------------------------")
 print("Title: {}". format(rssbot.title))
 print("Agent: {}". format(rssbot.user_agent))
 print("Max Feeds: {}". format(rssbot.max_feeds))
@@ -23,6 +35,7 @@ if rssbot.feeds_count > 0:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
         if rss.feed.has_key('title'):
             if rssbot.debug:
+                print("--------------------------")
                 print("RSS Feed Title: {}". format(rss.feed.title))
     
             if len(rss.entries) > 0:
@@ -49,6 +62,7 @@ if rssbot.feeds_count > 0:
 
 rssbot.conn.close()
 
+print("--------------------------")
 print("Processed feeds: {}". format(i))
 print("Processed items: {}". format(j))
 print("Added new links: {}". format(k))
