@@ -55,7 +55,7 @@ chmod +x setup.py
 ./setup.py
 ```
 
-The setup.py script will create a new database schema, if the one you specify doesn't already exist. All you should need is a valid username, password, and hostname for your database server.
+The setup.py script will create a new database schema, if the one you specify doesn't already exist. All you should need is a valid username, password and hostname for your database server.
 
 # Script Usage
 
