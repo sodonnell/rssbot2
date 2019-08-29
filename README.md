@@ -115,7 +115,7 @@ Most likely, you'll only need to execute this script a few times a day, dependin
 
 If you have more than 1000 feeds in your RSS feed inventory, then you'll need to consider a developing your own strategy to best manage the content you're consuming.
 
-By default, the runner.py script will scrape 250 randomly selected feeds from your RSS Feed Inventory, so there really is no real solution out of the box, if you're scraping thousands of feeds.
+By default, the runner.py script will scrape 250 randomly selected feeds from your RSS Feed Inventory, so there really is no out-of-the-box solution, if you're scraping thousands of feeds.
 
 ### Personal Blogs
 
