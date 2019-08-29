@@ -74,19 +74,19 @@ It is an interactive shell script that will prompt you to fill-in the blanks for
 ./add_feed.py
 ```
 
-Alternatively, you could create a web-based interface for this, either using the rssbot2.add_feed() function, inside of your web application interface code.
+Alternatively, you could create a web-based interface for this, but that's outside the scope of this project.
 
 ## runner.py
 
-Ideally, you'd execute the runner.py script on a set interval, via crontab automation.
-
-However, whether you execute it manually or autonomously, the command is the same.
+Ideally, you'd execute the runner.py script on a set interval, via crontab automation. However, whether you execute it manually or autonomously, the command is the same. 
 
 **Usage:**
 
 ```
 ./runner.py
 ```
+
+Feel free to extend the runner.py script as you see fit, for your application-specific requirements.
 
 # Automation via cron
 
