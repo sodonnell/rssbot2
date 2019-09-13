@@ -1,0 +1,2 @@
+mysql-connector-python==8.0.16
+feedparser==5.2.1
