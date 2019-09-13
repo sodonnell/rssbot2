@@ -3,8 +3,9 @@
 A modern version of my ancient rssbot module, written in python3.
 
 <!-- TOC -->
-- [Requirements](#requirements)
-- [Installation](#installation)
+- [Overview](#overview)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
 - [Script Usage](#script-usage)
   - [add_feed.py](#addfeedpy)
   - [runner.py](#runnerpy)
@@ -17,15 +18,13 @@ A modern version of my ancient rssbot module, written in python3.
 - [Python Framework Integration](#python-framework-integration)
   - [Django](#django)
   - [Flask](#flask)
-[Django](#django)
-[Flask](#flask)autoauto
 <!-- /TOC -->
 
-# Overview
+## Overview
 
 The rssbot2 python script is intended to monitor a random list of RSS Feeds that are defined within a mysql database table, on a continuous basis, and gather/add any new articles (links) that have been published since the last monitoring session.
 
-## Requirements
+### Requirements
 
 **Software**
 
@@ -41,7 +40,7 @@ The rssbot2 python script is intended to monitor a random list of RSS Feeds that
 pip3 install feedparser mysql-connector-python
 ```
 
-## Installation
+### Installation
 
 It's pretty straight-forward.
 
