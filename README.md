@@ -1,23 +1,25 @@
-# rssbot2 <!-- omit in toc -->
+# rssbot2
 
 A modern version of my ancient rssbot module, written in python3.
 
-**Table of Contents:**
-- [Overview](#Overview)
-  - [Requirements](#Requirements)
-  - [Installation](#Installation)
-- [Script Usage](#Script-Usage)
+<!-- TOC -->
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Script Usage](#script-usage)
   - [add_feed.py](#addfeedpy)
   - [runner.py](#runnerpy)
-- [Automation via cron](#Automation-via-cron)
+- [Automation via cron](#automation-via-cron)
   - [crontab interval](#crontab-interval)
-    - [Small RSS Feed Inventory](#Small-RSS-Feed-Inventory)
-    - [Large RSS Feed Inventory](#Large-RSS-Feed-Inventory)
-    - [Personal Blogs](#Personal-Blogs)
-    - [Mainstream News/Blogs](#Mainstream-NewsBlogs)
-- [Python Framework Integration](#Python-Framework-Integration)
-  - [Django](#Django)
-  - [Flask](#Flask)
+    - [Small RSS Feed Inventory](#small-rss-feed-inventory)
+    - [Large RSS Feed Inventory](#large-rss-feed-inventory)
+    - [Personal Blogs](#personal-blogs)
+    - [Mainstream News/Blogs](#mainstream-newsblogs)
+- [Python Framework Integration](#python-framework-integration)
+  - [Django](#django)
+  - [Flask](#flask)
+[Django](#django)
+[Flask](#flask)autoauto
+<!-- /TOC -->
 
 # Overview
 
@@ -57,11 +59,11 @@ chmod +x setup.py
 
 The setup.py script will create a new database schema, if the one you specify doesn't already exist. All you should need is a valid username, password and hostname for your database server.
 
-# Script Usage
+## Script Usage
 
-## add_feed.py
+### add_feed.py
 
-The add_feed.py script is intended to allow you to manually add new RSS Feeds to the rssbot database, via the command line. 
+The add_feed.py script is intended to allow you to manually add new RSS Feeds to the rssbot database, via the command line.
 
 It is an interactive shell script that will prompt you to fill-in the blanks for the following:
 
@@ -76,9 +78,9 @@ It is an interactive shell script that will prompt you to fill-in the blanks for
 
 Alternatively, you could create a web-based interface for this, but that's outside the scope of this project.
 
-## runner.py
+### runner.py
 
-Ideally, you'd execute the runner.py script on a set interval, via crontab automation. However, whether you execute it manually or autonomously, the command is the same. 
+Ideally, you'd execute the runner.py script on a set interval, via crontab automation. However, whether you execute it manually or autonomously, the command is the same.
 
 **Usage:**
 
@@ -88,11 +90,11 @@ Ideally, you'd execute the runner.py script on a set interval, via crontab autom
 
 Feel free to extend the runner.py script as you see fit, for your application-specific requirements.
 
-# Automation via cron
+## Automation via cron
 
 The main reason I wrote this script was to automate the collection of content from RSS Feeds, via cron.
 
-## crontab interval
+### crontab interval
 
 There are various factors to consider when determining the best interval to execute your rssbot via crontab automation.
 
@@ -105,34 +107,34 @@ There are various factors to consider when determining the best interval to exec
 
 These are all valid questions. There is no single or perfect answer. It's really subjective to how/where/when you use it.
 
-### Small RSS Feed Inventory
+#### Small RSS Feed Inventory
 
 If you have less than 1000 feeds in your RSS feed inventory, then you should probably only run this script no more than a few times a day. 
 
 Most likely, you'll only need to execute this script a few times a day, depending on the frequency of new content being published by the feeds that you're indexing.
 
-### Large RSS Feed Inventory
+#### Large RSS Feed Inventory
 
-If you have more than 1000 feeds in your RSS feed inventory, then you'll need to consider a developing your own strategy to best manage the content you're consuming.
+If you have more than 1000 feeds in your RSS feed inventory, then you'll need to consider developing your own strategy to best manage the content you're consuming.
 
 By default, the runner.py script will scrape 250 randomly selected feeds from your RSS Feed Inventory, so there really is no out-of-the-box solution, if you're scraping thousands of feeds.
 
-### Personal Blogs
+#### Personal Blogs
 
 Since most personal blogs publish limited amounts of content per day, you don't need to keep hammering at their feed every hour. One to two times a day is generally fine.
 
-### Mainstream News/Blogs
+#### Mainstream News/Blogs
 
 Corporate/mainstream news/blog sites generally publish dozens of articles per day, so this is something to consider when determining your crontab interval. 
 
 If the majority of your feeds are commercial content like this, you may want to index their content multiple times a day. Once an hour is generally reasonable for such a case, but keep in mind, that means 24 possoible hits per day to he same feed.
 
-# Python Framework Integration
+## Python Framework Integration
 
-## Django
+### Django
 
 @todo Document this.
 
-## Flask
+### Flask
 
 @todo Document this.
