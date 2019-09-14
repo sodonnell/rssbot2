@@ -34,7 +34,9 @@ rssbot.db_connect()
 
 feed_id = rssbot.add_feed(url,active)
 
-if feed_id == 0:
-    print("Could not process feed.")
+if feed_id == -1:
+    print("HTTP Request Error. Process halted.")
+elif feed_id == 0:
+    print("Feed could not be parsed properly.")
 else:
     print("Feed successfully added to the database. ID: {}". format(feed_id))
