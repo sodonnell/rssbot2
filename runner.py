@@ -33,6 +33,8 @@ if rssbot.feeds_count > 0:
 
     for feed in rssbot.feeds:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
+        http_status = "HTTP Response Status Code: %d" % (rss.status)
+        print(http_status)
         if rss.feed.has_key('title'):
             if rssbot.debug:
                 print("--------------------------")
