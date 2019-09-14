@@ -76,21 +76,22 @@ class rssbot2:
             rss = feedparser.parse(link,referrer=self.root_url)
             try: rss.status
             except: 
-                print 'HTTP Status not found.'
+                print('HTTP Status not found.')
+                return -1
             else: 
                 http_status = "HTTP Response Status Code: %d" % (rss.status)
                 print(http_status)
-            if rss.feed.has_key('title'):
-                rss.feed.title = rss.feed.title.replace("'",r"\'")
-                cursor = self.conn.cursor()
-                sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ('%s','%s','%s')" % (rss.feed.title,link,active)
-                cursor.execute(sql)
-                self.conn.commit()
-                id = cursor.lastrowid
-                cursor.close()
-                return id
-            else:
-                return 0
+                if rss.feed.has_key('title'):
+                    rss.feed.title = rss.feed.title.replace("'",r"\'")
+                    cursor = self.conn.cursor()
+                    sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ('%s','%s','%s')" % (rss.feed.title,link,active)
+                    cursor.execute(sql)
+                    self.conn.commit()
+                    id = cursor.lastrowid
+                    cursor.close()
+                    return id
+                else:
+                    return 0
         else:
             return self.feed.id
 
