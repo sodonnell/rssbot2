@@ -10,6 +10,7 @@ before_script:
   - mysql -u root -e "create user travisci identified by 'travisci'; grant all on travis_test.* to travisci;"
 
 script:
+  - python3 setup.py --help
   - python3 setup.py -u travisci -p travisci -d travis_test -h localhost
   - python3 add_feed.py -u https://phys.org/rss-feed/ -a
   - python3 add_feed.py -u https://hackaday.com/blog/feed/ -a
