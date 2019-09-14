@@ -62,6 +62,7 @@ database = None
 
 # let user define db credentials via input
 opts, args = getopt.getopt(sys.argv[1:],"h:d:u:p:",["host=","username=","password=","database=","--help"])
+
 for opt, arg in opts:
     if opt == '--help':
         print('For user-guided install, run:')
