@@ -18,15 +18,7 @@ A modern version of my ancient rssbot module, written in python3.
 - [Script Usage](#script-usage)
   - [add_feed.py](#addfeedpy)
   - [runner.py](#runnerpy)
-- [Automation via cron](#automation-via-cron)
-  - [crontab interval](#crontab-interval)
-    - [Small RSS Feed Inventory](#small-rss-feed-inventory)
-    - [Large RSS Feed Inventory](#large-rss-feed-inventory)
-    - [Personal Blogs](#personal-blogs)
-    - [Mainstream News/Blogs](#mainstream-newsblogs)
-- [Python Framework Integration](#python-framework-integration)
-  - [Django](#django)
-  - [Flask](#flask)
+- [Wiki Documentation](#wiki-documentation)
 <!-- /TOC -->
 
 ## Overview
@@ -122,51 +114,7 @@ python3 runner.py
 
 Feel free to extend the runner.py script as you see fit, for your application-specific requirements.
 
-## Automation via cron
+## Wiki Documentation
 
-The main reason I wrote this script was to automate the collection of content from RSS Feeds, via cron.
-
-### crontab interval
-
-There are various factors to consider when determining the best interval to execute your rssbot via crontab automation.
-
-* How many feeds am I indexing?
-* How much bandwidth am I paying for on my server/vm/cloud/etc.?
-* How many concurrent processes will my rssbot consume?
-* How many times do I really need to 'ping' RSS Feeds?
-* How much storage space is the rssbot going to consume in my database?
-* How much memory will rssbot consume during it's process?
-
-These are all valid questions. There is no single or perfect answer. It's really subjective to how/where/when you use it.
-
-#### Small RSS Feed Inventory
-
-If you have less than 1000 feeds in your RSS feed inventory, then you should probably only run this script no more than a few times a day. 
-
-Most likely, you'll only need to execute this script a few times a day, depending on the frequency of new content being published by the feeds that you're indexing.
-
-#### Large RSS Feed Inventory
-
-If you have more than 1000 feeds in your RSS feed inventory, then you'll need to consider developing your own strategy to best manage the content you're consuming.
-
-By default, the runner.py script will scrape 250 randomly selected feeds from your RSS Feed Inventory, so there really is no out-of-the-box solution, if you're scraping thousands of feeds.
-
-#### Personal Blogs
-
-Since most personal blogs publish limited amounts of content per day, you don't need to keep hammering at their feed every hour. One to two times a day is generally fine.
-
-#### Mainstream News/Blogs
-
-Corporate/mainstream news/blog sites generally publish dozens of articles per day, so this is something to consider when determining your crontab interval. 
-
-If the majority of your feeds are commercial content like this, you may want to index their content multiple times a day. Once an hour is generally reasonable for such a case, but keep in mind, that means 24 possoible hits per day to he same feed.
-
-## Python Framework Integration
-
-### Django
-
-@todo Document this.
-
-### Flask
-
-@todo Document this.
+- [Automating runner.py via cron](https://github.com/sodonnell/rssbot2/wiki/Automating-runner.py-via-cron)
+- [Python Framework Integration](https://github.com/sodonnell/rssbot2/wiki/Python-Framework-Integration)
