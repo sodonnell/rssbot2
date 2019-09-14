@@ -55,6 +55,11 @@ class setup:
         cursor.close()
         self.conn.close()
 
+hostname = None
+username = None
+password = None
+database = None
+
 # let user define db credentials via input
 opts, args = getopt.getopt(sys.argv,"h:d:u:p:",["host=","username=","password=","database=","--help"])
 for opt, arg in opts:
