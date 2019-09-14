@@ -93,7 +93,7 @@ It is an interactive shell script that will prompt you to fill-in the blanks for
 **Usage:**
 
 ```
-./add_feed.py
+python3 add_feed.py
 ```
 
 The add_feed.py script also supports the arguments:
