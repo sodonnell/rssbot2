@@ -8,6 +8,7 @@ A modern version of my ancient rssbot module, written in python3.
 - [Overview](#overview)
   - [Requirements](#requirements)
   - [Installation](#installation)
+  - [Setup](#setup)
 - [Script Usage](#script-usage)
   - [add_feed.py](#addfeedpy)
   - [runner.py](#runnerpy)
@@ -35,30 +36,48 @@ The rssbot2 python script is intended to monitor a random list of RSS Feeds that
 
 **Python Modules**
 
+* configobj
 * feedparser
 * mysql-connector-python
-
-```
-pip3 install feedparser mysql-connector-python
-```
 
 ### Installation
 
 It's pretty straight-forward.
 
 1) Clone this repo.
-2) Make setup.py executable.
+2) Install the dependencies.
 3) Run the setup.py script.
 4) Enter the database configuration information during the setup process.
 
 ```
 git clone https://github.com/sodonnell/rssbot2.git
 cd rssbot2
-chmod +x setup.py
-./setup.py
+pip3 install -r requirements.txt
+```
+
+### Setup
+
+The suggested setup method is as so:
+
+```
+python3 setup.py
 ```
 
 The setup.py script will create a new database schema, if the one you specify doesn't already exist. All you should need is a valid username, password and hostname for your database server.
+
+Alternatively, you can pass arguments when you call the setup.py script. Use the --help argument to see the available arguments.
+
+```
+python3 setup.py --help
+```
+
+**Example:**
+
+```
+python3 setup.py -u myusername -d mydatabasename -h localhost
+```
+
+Any of the arguments that you prefer not to include, will prompt you for user input. Specifically, we do not suggest using the -p or --password arguments. These are mainly for automated testing in travisci, but you're on your own if you do.
 
 ## Script Usage
 
@@ -77,7 +96,13 @@ It is an interactive shell script that will prompt you to fill-in the blanks for
 ./add_feed.py
 ```
 
-Alternatively, you could create a web-based interface for this, but that's outside the scope of this project.
+The add_feed.py script also supports the arguments:
+
+```
+python3 add_feed.py -u https://someblog.com/rss/ -a Y
+```
+
+Alternatively, you could create a web-based interface, instead, but that's outside the scope of this project.
 
 ### runner.py
 
@@ -86,7 +111,7 @@ Ideally, you'd execute the runner.py script on a set interval, via crontab autom
 **Usage:**
 
 ```
-./runner.py
+python3 runner.py
 ```
 
 Feel free to extend the runner.py script as you see fit, for your application-specific requirements.
