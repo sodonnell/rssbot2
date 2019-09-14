@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import mysql.connector, sys
+import mysql.connector, sys, getopt
 from mysql.connector import errorcode
 
 DB_TABLES = {}
