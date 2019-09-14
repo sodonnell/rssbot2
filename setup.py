@@ -78,16 +78,16 @@ for opt, arg in opts:
     elif opt in ("-d", "--database"):
         database = arg
 
-if hostname == None:
+if hostname is None:
     hostname = input("Enter your database hostname/ip: ")
 
-if username == None:
+if username is None:
     username = input("Enter your database user name: ")
 
-if password == None:
+if password is None:
     password = input("Enter your database user password: ")
 
-if database == None:
+if database is None:
     database = input("Enter your database schema name to create, or use existing: ")
 
 # write config.py file programmaticlly

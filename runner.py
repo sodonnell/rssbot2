@@ -4,7 +4,7 @@ from rssbot2 import rssbot2
 
 rssbot = rssbot2()
 
-banner="""
+banner = """
      ____  __________ ____        __ 
     / __ \/ ___/ ___// __ )____  / /_
    / /_/ /\__ \\__ \/ __  / __ \/ __/
