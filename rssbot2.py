@@ -71,7 +71,7 @@ class rssbot2:
         cursor.execute(sql)
         self.feed = cursor.fetchone()
         self.feed_count = cursor.rowcount
-
+        print(self.feed)
         if self.feed_count == 0:
             rss = feedparser.parse(link,referrer=self.root_url)
             try: rss.status
@@ -91,7 +91,7 @@ class rssbot2:
                     cursor.close()
                     return id
                 else:
-                    return 0
+                    return -2
         else:
             return self.feed.id
 

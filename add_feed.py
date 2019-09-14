@@ -34,8 +34,11 @@ rssbot.db_connect()
 
 feed_id = rssbot.add_feed(url,active)
 
+# @todo fix this procedure
 if feed_id == -1:
     print("HTTP Request Error. Process halted.")
+elif feed_id == -2:
+    print("Feed already exists. Process halted.")
 elif feed_id == 0:
     print("Feed could not be parsed properly.")
 else:

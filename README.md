@@ -1,8 +1,14 @@
-[![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=development)](https://travis-ci.org/sodonnell/rssbot2)
-
-# rssbot2 
+# rssbot2
 
 A modern version of my ancient rssbot module, written in python3.
+
+**Branch: master**
+
+[![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=master)](https://travis-ci.org/sodonnell/rssbot2)
+
+**Branch: development**
+
+[![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=development)](https://travis-ci.org/sodonnell/rssbot2)
 
 <!-- TOC -->
 - [Overview](#overview)
