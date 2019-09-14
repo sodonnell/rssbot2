@@ -3,6 +3,8 @@ python: 3.6
 
 services: mysql
 
+install: pip3 install config
+
 script:
   - python3 setup.py -u travisci -p travisci -d travis_test -h localhost
   - python3 add_feed.py https://hackaday.com/blog/feed/
