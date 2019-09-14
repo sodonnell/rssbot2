@@ -7,7 +7,7 @@ install: pip3 install -r requirements.txt
 
 before_script:
   - mysql -u root -e "create database travis_test;"
-  - mysql -u root -e "create user travisci identified by 'travisci'; grant all on travis_test.* to travis_ci;"
+  - mysql -u root -e "create user travisci identified by 'travisci'; grant all on travis_test.* to travisci;"
 
 script:
   - python3 setup.py -u travisci -p travisci -d travis_test -h localhost
