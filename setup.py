@@ -59,10 +59,10 @@ class setup:
 opts, args = getopt.getopt(argv,"h:d:u:p:",["host=","username=","password=","database=","--help"])
 for opt, arg in opts:
     if opt == '--help':
-        print 'For user-guided install (suggested), run:'
-        print 'setup.py\n'
-        print 'For user-directed install (not suggested), run:'
-        print 'setup.py -h <hostname> -u <username> -p <password> -d <database>'
+        print('For user-guided install, run:')
+        print('setup.py')
+        print('For user-directed install, run:')
+        print('setup.py -h <hostname> -u <username> -p <password> -d <database>')
         sys.exit()
     elif opt in ("-u", "--username"):
         username = arg
