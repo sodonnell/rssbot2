@@ -33,6 +33,6 @@ rssbot.db_connect()
 feed_id = rssbot.add_feed(url,active)
 
 if feed_id == 0:
-    print("Feed already exists in database. Command ignored.")
+    print("Could not process feed.")
 else:
     print("Feed successfully added to the database. ID: {}". format(feed_id))
