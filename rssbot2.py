@@ -66,7 +66,7 @@ class rssbot2:
 
     def add_feed(self,link,active='N'):
         # get rss feed data via link
-        sql = "select id from rssbot2_feeds where id = '{}'". format(link)
+        sql = "select id from rssbot2_feeds where link = '{}'". format(link)
         cursor = self.conn.cursor()
         cursor.execute(sql)
         self.feed = cursor.fetchone()
@@ -91,7 +91,7 @@ class rssbot2:
                     cursor.close()
                     return id
                 else:
-                    return -2
+                    return 0
         else:
             return self.feed.id
 
