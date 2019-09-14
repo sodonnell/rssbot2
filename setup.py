@@ -65,10 +65,10 @@ opts, args = getopt.getopt(sys.argv[1:],"h:d:u:p:",["hostname=","username=","pas
 
 for opt, arg in opts:
     if opt == '--help':
-        print('For user-guided install, run:')
-        print('setup.py')
-        print('For user-directed install, run:')
-        print('setup.py -h <hostname> -u <username> -p <password> -d <database>')
+        print('\nFor user-guided install, run:')
+        print('\tpython3 setup.py')
+        print('\nFor user-directed install, run:')
+        print('\tpython3 setup.py -h <hostname> -u <username> -p <password> -d <database>')
         sys.exit()
     elif opt in ("-u", "--username"):
         username = arg
