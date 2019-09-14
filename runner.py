@@ -34,7 +34,8 @@ if rssbot.feeds_count > 0:
     for feed in rssbot.feeds:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
         try: http_status
-        except: NameError "HTTP Status not found."
+        except: 
+            print 'HTTP Status not found.'
         else: 
             http_status = "HTTP Response Status Code: %d" % (rss.status)
             print(http_status)
