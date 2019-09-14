@@ -68,7 +68,7 @@ for opt, arg in opts:
         print('\nFor user-guided install, run:')
         print('\tpython3 setup.py')
         print('\nFor user-directed install, run:')
-        print('\tpython3 setup.py -h <hostname> -u <username> -p <password> -d <database>')
+        print('\tpython3 setup.py -h <hostname> -u <username> -p <password> -d <database>\n')
         sys.exit()
     elif opt in ("-u", "--username"):
         username = arg
