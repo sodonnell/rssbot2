@@ -1,3 +1,11 @@
 language: python
 python: 3.6
-script: python3 runner.py
+
+services: mysql
+
+script:
+  - python3 setup.py -u travisci -p travisci -d travis_test -h localhost
+  - python3 add_feed.py https://hackaday.com/blog/feed/
+  - python3 add_feed.py https://phys.org/rss-feed/
+  - python3 add_feed.py https://www.wired.com/feed/rss
+  - python3 runner.py

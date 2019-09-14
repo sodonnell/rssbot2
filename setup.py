@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import mysql.connector
+import mysql.connector, sys
 from mysql.connector import errorcode
 
 DB_TABLES = {}
@@ -56,19 +56,43 @@ class setup:
         self.conn.close()
 
 # let user define db credentials via input
-host = input("Enter your database hostname/ip: ")
-username = input("Enter your database user name: ")
-password = input("Enter your database user password: ")
-database = input("Enter your database schema name to create, or use existing: ")
+opts, args = getopt.getopt(argv,"h:d:u:p:",["host=","username=","password=","database=","--help"])
+for opt, arg in opts:
+    if opt == '--help':
+        print 'For user-guided install (suggested), run:'
+        print 'setup.py\n'
+        print 'For user-directed install (not suggested), run:'
+        print 'setup.py -h <hostname> -u <username> -p <password> -d <database>'
+        sys.exit()
+    elif opt in ("-u", "--username"):
+        username = arg
+    elif opt in ("-p", "--password"):
+        password = arg
+    elif opt in ("-h", "--hostname"):
+        hostname = arg
+    elif opt in ("-d", "--database"):
+        database = arg
+
+if hostname == None:
+    hostname = input("Enter your database hostname/ip: ")
+
+if username == None:
+    username = input("Enter your database user name: ")
+
+if password == None:
+    password = input("Enter your database user password: ")
+
+if database == None:
+    database = input("Enter your database schema name to create, or use existing: ")
 
 # write config.py file programmaticlly
 # old-school string type handler. need to modernize this using format() or json encoding.
 config_file = open("config.py","w+")
-config_file.write("db = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n\t'raise_on_warnings': True\n}\n" % (username, password, host, database))
+config_file.write("db = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n\t'raise_on_warnings': True\n}\n" % (username, password, hostname, database))
 config_file.close()
 
 # @todo add sanity checks before proceeding to setup class procedures.
 # run setup class.
-setup = setup({"host": host, "database": database, "user": username, "password": password})
+setup = setup({"host": hostname, "database": database, "user": username, "password": password})
 setup.create_database(database)
 setup.create_tables()
