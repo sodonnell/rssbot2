@@ -66,18 +66,26 @@ class rssbot2:
 
     def add_feed(self,link,active='N'):
         # get rss feed data via link
-        rss = feedparser.parse(link,referrer=self.root_url)
-        if rss.feed.has_key('title'):
-            rss.feed.title = rss.feed.title.replace("'",r"\'")
-            cursor = self.conn.cursor()
-            sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ('%s','%s','%s')" % (rss.feed.title,link,active)
-            cursor.execute(sql)
-            self.conn.commit()
-            id = cursor.lastrowid
-            cursor.close()
-            return id
+        sql = "select id from rssbot2_feeds where id = '{}'". format(link)
+        cursor = self.conn.execute(sql)
+        self.feed = cursor.fetchone()
+        self.feed_count = cursor.rowcount
+
+        if self.feed_count == 0:
+            rss = feedparser.parse(link,referrer=self.root_url)
+            if rss.feed.has_key('title'):
+                rss.feed.title = rss.feed.title.replace("'",r"\'")
+                cursor = self.conn.cursor()
+                sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ('%s','%s','%s')" % (rss.feed.title,link,active)
+                cursor.execute(sql)
+                self.conn.commit()
+                id = cursor.lastrowid
+                cursor.close()
+                return id
+            else:
+                return 0
         else:
-            return 0
+            return self.feed.id
 
     def add_link(self,feed_id,title,link):
         cursor = self.conn.cursor()

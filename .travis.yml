@@ -11,7 +11,7 @@ before_script:
 
 script:
   - python3 setup.py -u travisci -p travisci -d travis_test -h localhost
-  - python3 add_feed.py -a Y -u https://hackaday.com/blog/feed/
   - python3 add_feed.py -a Y -u https://phys.org/rss-feed/
+  - python3 add_feed.py -a Y -u https://hackaday.com/blog/feed/
   - python3 add_feed.py -a Y -u https://www.wired.com/feed/rss
   - python3 runner.py
