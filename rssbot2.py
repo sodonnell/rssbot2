@@ -93,7 +93,7 @@ class rssbot2:
                 else:
                     return 0
         else:
-            return self.feed.id
+            return -2
 
     def add_link(self,feed_id,title,link):
         cursor = self.conn.cursor()
