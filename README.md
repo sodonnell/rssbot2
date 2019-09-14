@@ -99,7 +99,7 @@ python3 add_feed.py
 The add_feed.py script also supports the arguments:
 
 ```
-python3 add_feed.py -u https://someblog.com/rss/ -a Y
+python3 add_feed.py -u https://somesite.com/feed.rss -a
 ```
 
 Alternatively, you could create a web-based interface, instead, but that's outside the scope of this project.

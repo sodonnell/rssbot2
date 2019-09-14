@@ -74,8 +74,11 @@ class rssbot2:
 
         if self.feed_count == 0:
             rss = feedparser.parse(link,referrer=self.root_url)
-            http_status = "HTTP Response Status Code: %d" % (rss.status)
-            print(http_status)
+            try: rss.status
+            except: NameError "HTTP Status not found."
+            else: 
+                http_status = "HTTP Response Status Code: %d" % (rss.status)
+                print(http_status)
             if rss.feed.has_key('title'):
                 rss.feed.title = rss.feed.title.replace("'",r"\'")
                 cursor = self.conn.cursor()

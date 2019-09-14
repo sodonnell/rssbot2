@@ -34,7 +34,8 @@ rssbot.db_connect()
 
 feed_id = rssbot.add_feed(url,active)
 
+# @todo refactor to properly handle HTTP Response errors vs. bad feed formats
 if feed_id == 0:
-    print("Could not process feed.")
+    print("Could not process feed. Exiting.")
 else:
     print("Feed successfully added to the database. ID: {}". format(feed_id))
