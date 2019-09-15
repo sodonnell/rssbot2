@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import mysql.connector, sys, getopt
+import mysql.connector, sys, getopt, banner
 from mysql.connector import errorcode
 
 DB_TABLES = {}
@@ -54,6 +54,8 @@ class setup:
                 print("OK")
         cursor.close()
         self.conn.close()
+
+print(banner.rssbot_logo)
 
 hostname = None
 username = None

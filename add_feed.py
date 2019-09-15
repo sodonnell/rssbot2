@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
-import sys, getopt
+import sys, getopt, banner
 from rssbot2 import rssbot2
 
 url = None
 active = None
 
-# let user define db credentials via input
-opts, args = getopt.getopt(sys.argv[1:],"adu:",["url=","--help"])
+# let user define the feed url and active-state via args
+opts, args = getopt.getopt(sys.argv[1:],"adu:",["url=","help"])
 
 for opt, arg in opts:
     if opt == '--help':
-        print('add_feed.py -u https://somefeed.com/rss/ -a Y')
+        print('Add an active feed:\n')
+        print('\tpython3 add_feed.py -u https://somefeed.com/rss/ -a\n')
+        print('Add a de-activated feed:\n')
+        print('\tpython3 add_feed.py -u https://somefeed.com/rss/ -d\n')
         sys.exit()
     elif opt in ("-u", "--url"):
         url = arg
@@ -18,6 +21,8 @@ for opt, arg in opts:
         active = "Y"
     elif opt in ("-d"):
         active = "N"
+
+print(banner.rssbot_logo)
 
 if url is None:
     url = input("Enter an RSS Feed URL: ")
