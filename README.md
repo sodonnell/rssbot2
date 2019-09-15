@@ -4,14 +4,16 @@ A modern version of my ancient rssbot module, written in python3.
 
 | Branch | Build Status |
 |-|-|
-| master | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=master)](https://travis-ci.org/sodonnell/rssbot2) | 
+| master | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=master)](https://travis-ci.org/sodonnell/rssbot2) |
 | development | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=development)](https://travis-ci.org/sodonnell/rssbot2) |
 
 <!-- TOC -->
 - [Overview](#overview)
   - [Requirements](#requirements)
+    - [Hardware](#hardware)
+    - [Software](#software)
+    - [PiPy Modules](#pipy-modules)
   - [Installation](#installation)
-  - [Setup](#setup)
 - [Script Usage](#script-usage)
   - [add_feed.py](#addfeedpy)
   - [runner.py](#runnerpy)
@@ -24,16 +26,18 @@ The rssbot2 python script is intended to monitor a random list of RSS Feeds that
 
 ### Requirements
 
-**Software**
+#### Hardware
 
-* Python >= 3.0
-* MySQL >= 5.0
+#### Software
 
-**Python Modules**
+- Python >= 3.6
+- MySQL >= 5.0
 
-* configobj
-* feedparser
-* mysql-connector-python
+#### PiPy Modules
+
+- configobj
+- feedparser
+- mysql-connector-python
 
 ### Installation
 
@@ -44,17 +48,10 @@ It's pretty straight-forward.
 3) Run the setup.py script.
 4) Enter the database configuration information during the setup process.
 
-```
+```bash
 git clone https://github.com/sodonnell/rssbot2.git
 cd rssbot2
 pip3 install -r requirements.txt
-```
-
-### Setup
-
-The suggested setup method is as so:
-
-```
 python3 setup.py
 ```
 
@@ -62,14 +59,14 @@ The setup.py script will create a new database schema, if the one you specify do
 
 Alternatively, you can pass arguments when you call the setup.py script. Use the --help argument to see the available arguments.
 
-```
+```bash
 python3 setup.py --help
 ```
 
 **Example:**
 
-```
-python3 setup.py -u myusername -d mydatabasename -h localhost
+```bash
+python3 setup.py -u rssbot -d rssbot -h localhost
 ```
 
 Any of the arguments that you prefer not to include, will prompt you for user input. Specifically, we do not suggest using the -p or --password arguments. These are mainly for automated testing in travisci, but you're on your own if you do.
@@ -82,8 +79,8 @@ The add_feed.py script is intended to allow you to manually add new RSS Feeds to
 
 It is an interactive shell script that will prompt you to fill-in the blanks for the following:
 
-* RSS Feed URL (i.e. https://somesite.com/feed.rss)
-* Activate Feed (Y/N)
+- RSS Feed URL (i.e. https://somesite.com/feed.rss)
+- Activate Feed (Y/N)
 
 **Usage:**
 

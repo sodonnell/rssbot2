@@ -33,6 +33,10 @@ if rssbot.feeds_count > 0:
 
     for feed in rssbot.feeds:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
+        if rssbot.debug:
+            print("--------------------------")
+            print("RSS Feed Title: {}". format(rss.feed.title))
+            print("RSS Feed URL: {}". format(rss.feed.link))
         try: rss.status
         except: 
             print('HTTP Status not found.')
@@ -40,10 +44,6 @@ if rssbot.feeds_count > 0:
             http_status = "HTTP Response Status Code: %d" % (rss.status)
             print(http_status)
             if rss.feed.has_key('title'):
-                if rssbot.debug:
-                    print("--------------------------")
-                    print("RSS Feed Title: {}". format(rss.feed.title))
-        
                 if len(rss.entries) > 0:
                     for entry in rss.entries:
                         if entry.has_key('title') and entry.has_key('link'):
