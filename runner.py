@@ -1,20 +1,10 @@
 #!/usr/bin/env python3
-import feedparser
+import feedparser, banner
 from rssbot2 import rssbot2
 
 rssbot = rssbot2()
 
-banner = """
-     ____  __________ ____        __ 
-    / __ \/ ___/ ___// __ )____  / /_
-   / /_/ /\__ \\__ \/ __  / __ \/ __/
-  / _, _/___/ /__/ / /_/ / /_/ / /_  
- /_/ |_|/____/____/_____/\____/\__/ v2.0
-
- A simple RSS Crawler written in python.
-
-"""
-print(banner)
+print(banner.rssbot_logo)
 print("--------------------------")
 print("Title: {}". format(rssbot.title))
 print("Agent: {}". format(rssbot.user_agent))
