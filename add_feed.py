@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-import sys, getopt, banner
+import sys, getopt
 from rssbot2 import rssbot2
-
-rssbot = rssbot2()
 
 url = None
 active = None
@@ -24,7 +22,7 @@ for opt, arg in opts:
     elif opt in ("-d"):
         active = "N"
 
-print(banner.rssbot_logo)
+#print(banner.rssbot_logo)
 
 if url is None:
     url = input("Enter an RSS Feed URL: ")
