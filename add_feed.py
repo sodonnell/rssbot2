@@ -2,6 +2,8 @@
 import sys, getopt, banner
 from rssbot2 import rssbot2
 
+rssbot = rssbot2()
+
 url = None
 active = None
 
