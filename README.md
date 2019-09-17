@@ -7,6 +7,11 @@ A modern version of my ancient rssbot module, written in python3.
 | master | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=master)](https://travis-ci.org/sodonnell/rssbot2) |
 | development | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=development)](https://travis-ci.org/sodonnell/rssbot2) |
 
+![Github issues](https://img.shields.io/github/issues/sodonnell/rssbot2)
+![Github forks](https://img.shields.io/github/forks/sodonnell/rssbot2)
+![Github stars](https://img.shields.io/github/stars/sodonnell/rssbot2)
+![Github license](https://img.shields.io/github/license/sodonnell/rssbot2)
+
 <!-- TOC -->
 - [Overview](#overview)
   - [Requirements](#requirements)
