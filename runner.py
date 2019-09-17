@@ -13,10 +13,10 @@ print("Max Feeds: {}". format(rssbot.max_feeds))
 rssbot.db_connect()
 rssbot.get_feeds()
 
-# iteration cursors
-i=0
-j=0
-k=0
+# iteration cursors (yuck)
+i=0 # iterations
+p=0 # links processed
+a=0 # links added
 
 if rssbot.feeds_count > 0:
     print("Aggregating {} Feeds". format(rssbot.feeds_count))
@@ -46,11 +46,11 @@ if rssbot.feeds_count > 0:
                                         print("\nAdded Record {}". format(id))
                                         print(str(entry.title))
                                         print(str(entry.link))
-                                    k=k+1
+                                    a=a+1
                             except:
                                 print("Exception thrown while processing item.")
 
-                            j=j+1
+                            p=p+1
             else:
                 rssbot.deactivate_feed(feed[2])
             
@@ -60,5 +60,5 @@ rssbot.conn.close()
 
 print("--------------------------")
 print("Processed feeds: {}". format(i))
-print("Processed items: {}". format(j))
-print("Added new links: {}". format(k))
+print("Processed items: {}". format(p))
+print("Added new links: {}". format(a))
