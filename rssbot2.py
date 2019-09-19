@@ -50,7 +50,7 @@ class rssbot2:
         self.feeds_count = cursor.rowcount
         cursor.close()
 
-    def deactivate_feed(self,id,):
+    def deactivate_feed(self,id):
         sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = '{}'". format(id)
         print(sql)
         cursor = self.conn.cursor()
@@ -99,6 +99,11 @@ class rssbot2:
             if active == "N":
                 self.deactivate_feed(self.feed[0])
                 return -3
+            # temporary kludge. @todo fix this entire process.
+            elif active == "Y":
+                self.activate_feed(self.feed[0])
+                return -3
+
             return -2
 
     def add_link(self,feed_id,title,link):
