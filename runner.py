@@ -25,7 +25,8 @@ if rssbot.feeds_count > 0:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
         if rssbot.debug:
             print("--------------------------")
-            print("RSS Feed Title: {}". format(rss.feed.title))
+            if rss.feed.has_key('title'):
+                print("RSS Feed Title: {}". format(rss.feed.title))
             if (rss.feed.has_key('link')):
                 print("RSS Feed URL: {}". format(rss.feed.link))
         try: rss.status
