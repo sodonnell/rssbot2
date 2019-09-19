@@ -52,17 +52,19 @@ class rssbot2:
 
     def deactivate_feed(self,id,):
         sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = '{}'". format(id)
+        print(sql)
         cursor = self.conn.cursor()
         cursor.execute(sql)
         cursor.close()
-        print("Feed %d de-activated.", id)
+        print("Feed %d de-activated." % id)
 
     def activate_feed(self,id):
         sql = "UPDATE rssbot2_feeds SET active = 'Y' WHERE id = '{}'". format(id)
+        print(sql)
         cursor = self.conn.cursor()
         cursor.execute(sql)
         cursor.close()
-        print("Feed %d activated.", id)
+        print("Feed %d activated." % id)
 
     def add_feed(self,link,active='N'):
         # get rss feed data via link
