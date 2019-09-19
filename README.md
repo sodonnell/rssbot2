@@ -17,7 +17,7 @@ A modern version of my ancient rssbot module, written in python3.
   - [Requirements](#requirements)
     - [Hardware](#hardware)
     - [Software](#software)
-    - [PiPy Modules](#pipy-modules)
+    - [PyPi Modules](#pypi-modules)
   - [Installation](#installation)
 - [Script Usage](#script-usage)
   - [add_feed.py](#addfeedpy)
@@ -38,7 +38,7 @@ The rssbot2 python script is intended to monitor a random list of RSS Feeds that
 - Python >= 3.6
 - MySQL >= 5.0
 
-#### PiPy Modules
+#### PyPi Modules
 
 - configobj
 - feedparser
