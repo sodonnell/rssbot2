@@ -26,7 +26,8 @@ if rssbot.feeds_count > 0:
         if rssbot.debug:
             print("--------------------------")
             print("RSS Feed Title: {}". format(rss.feed.title))
-            print("RSS Feed URL: {}". format(rss.feed.link))
+            if (rss.feed.has_key('link')):
+                print("RSS Feed URL: {}". format(rss.feed.link))
         try: rss.status
         except: 
             print('HTTP Status not found.')

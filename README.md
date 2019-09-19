@@ -11,8 +11,6 @@ A modern version of my ancient rssbot module, written in python3.
 ![Github forks](https://img.shields.io/github/forks/sodonnell/rssbot2)
 ![Github stars](https://img.shields.io/github/stars/sodonnell/rssbot2)
 ![Github license](https://img.shields.io/github/license/sodonnell/rssbot2)
-![Twitter](https://img.shields.io/twitter/url?url=https://github.com/sodonnell/rssbot2)
-![Twitter](https://img.shields.io/twitter/follow/x0dbot?label=Follow)
 
 <!-- TOC -->
 - [Overview](#overview)
