@@ -44,6 +44,8 @@ if feed_id == -1:
     print("HTTP Request error. Process halted.")
 elif feed_id == -2:
     print("Feed already exists. Process halted.")
+elif feed_id == -3:
+    print("Feed status updated.")
 elif feed_id == 0:
     print("Feed could not be parsed properly.")
 else:
