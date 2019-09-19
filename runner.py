@@ -53,7 +53,7 @@ if rssbot.feeds_count > 0:
                                 print("Exception thrown while processing item.")
 
                             p=p+1
-                        else
+                        else:
                             print('Unable to parse item. Bad title or link format.')
             else:
                 rssbot.deactivate_feed(feed[2])
