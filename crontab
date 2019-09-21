@@ -15,4 +15,4 @@
 #│    │    └───────────  Day      (1..31)
 #│    └────────────────  Hour     (0..23)
 #└─────────────────────  Minute   (0..59)
-*/30 * * * * $HOME/rssbot2/runner.py
+*/30 * * * * $HOME/rssbot2/runner.py 2>&1 > /var/log/rssbot2.log
