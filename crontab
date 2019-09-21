@@ -1,0 +1,18 @@
+# 
+# rssbot2 crontab
+#
+# This is the default rssbot2 crontab. 
+#
+# Execute the runner.py script every 30 minutes.
+#
+# Usage:
+# crontab $HOME/rssbot2/crontab
+#
+
+#┬    ┬    ┬    ┬    ┬
+#│    │    │    │    └─  Weekday  (0=Sun .. 6=Sat)
+#│    │    │    └──────  Month    (1..12)
+#│    │    └───────────  Day      (1..31)
+#│    └────────────────  Hour     (0..23)
+#└─────────────────────  Minute   (0..59)
+*/30 * * * * $HOME/rssbot2/runner.py
