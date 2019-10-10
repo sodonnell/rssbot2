@@ -1,7 +1,11 @@
 language: python
 python: 3.6
 
-services: mysql
+services: 
+  - elasticsearch
+  - memcached
+  - mysql
+  - redis
 
 install: pip3 install -r requirements.txt
 
