@@ -2,10 +2,17 @@ language: python
 python: 3.6
 
 services: 
+#  - cassandra
+#  - couchdb
   - elasticsearch
   - memcached
+#  - mongodb
+#  - mariadb
   - mysql
+#  - postgresql
+#  - rabbitmq
   - redis
+#  - riak
 
 install: pip3 install -r requirements.txt
 

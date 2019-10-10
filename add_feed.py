@@ -39,9 +39,14 @@ rssbot.db_connect()
 
 feed_id = rssbot.add_feed(url,active)
 
-# @todo fix this procedure
+#
+# @todo fix this algorithm. 
+#
+# - Python needs a default switch/case procedure. 
+# - feedparser and rssbot need better exception handling.
+#
 if feed_id == -1:
-    print("HTTP Request error. Process halted.")
+    print("HTTP request error. Process halted.")
 elif feed_id == -2:
     print("Feed already exists. Process halted.")
 elif feed_id == -3:
