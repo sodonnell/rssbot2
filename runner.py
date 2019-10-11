@@ -29,17 +29,20 @@ if rssbot.feeds_count > 0:
                 print("RSS Feed Title: {}". format(rss.feed.title))
             if (rss.feed.has_key('link')):
                 print("RSS Feed URL: {}". format(rss.feed.link))
+
         try: rss.status
         except: 
             print('HTTP Status not found.')
         else: 
             http_status = "HTTP Response Status Code: %d" % (rss.status)
+
             print(http_status)
+
             if rss.feed.has_key('title'):
                 if len(rss.entries) > 0:
                     for entry in rss.entries:
                         if entry.has_key('title') and entry.has_key('link'):
-        
+
                             id = rssbot.add_link(feed[2],entry.title,entry.link)
 
                             try:

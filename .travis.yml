@@ -23,7 +23,19 @@ before_script:
 script:
   - python3 setup.py --help
   - python3 setup.py -u travisci -p travisci -d travis_test -h localhost
+
+# The add_feed.py script won't work via travis-ci's public CI system, 
+# due to the outbound HTTP requests that it makes,
+# so it should output the following message for each feed:
+#
+# HTTP Status not found.
+# HTTP request error. Process halted.
+#
   - python3 add_feed.py -u https://phys.org/rss-feed/ -a
   - python3 add_feed.py -u https://hackaday.com/blog/feed/ -a
   - python3 add_feed.py -u https://www.wired.com/feed/rss -a
+
+# These commands (above) should at least help reveal any other basic 
+# exceptions that we DO want to detect.
+
   - python3 runner.py
