@@ -1,5 +1,9 @@
+#
+# rssbot2 travis-ci config
+#
 language: python
 python: 3.6
+os: linux
 
 services: 
 #  - cassandra

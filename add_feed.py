@@ -46,7 +46,7 @@ feed_id = rssbot.add_feed(url,active)
 # - feedparser and rssbot need better exception handling.
 #
 if feed_id == -1:
-    print("HTTP request error. Process halted.")
+    print("HTTP Request error. Process halted.")
 elif feed_id == -2:
     print("Feed already exists. Process halted.")
 elif feed_id == -3:
