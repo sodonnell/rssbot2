@@ -1,0 +1,55 @@
+name: rssbot2
+
+on:
+  push:
+    - master
+    - development
+
+jobs:
+  services:
+    mysql: 
+      image: mysql
+      ports:
+        - 3306/tcp
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        pip install pytest
+        pytest
+    - name: Install and configure mysql-server
+      run: |
+        mysql -u root -e "create database rssbot2;"
+        mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;"
+    - name: Setup and Configure rssbot2
+      run: |
+        python setup.py --help
+        python setup.py -u rssbot2 -p rssbot2 -d rssbot2 -h localhost
+    - name: Add some RSS Feeds for testing.
+      run: |
+        python add_feed.py -u https://phys.org/rss-feed/ -a
+        python add_feed.py -u https://hackaday.com/blog/feed/ -a
+        python add_feed.py -u https://www.wired.com/feed/rss -a
+    - name: Execute the rssbot2 runner.
+      run: |
+        python runner.py
