@@ -1,9 +1,6 @@
 name: rssbot2
 
-on:
-  push:
-    - master
-    - development
+on: push
 
 jobs:
   services:
