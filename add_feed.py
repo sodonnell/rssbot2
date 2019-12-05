@@ -54,4 +54,4 @@ elif feed_id == -3:
 elif feed_id == 0:
     print("Feed could not be parsed properly.")
 else:
-    print("Feed successfully added to the database. ID: {}". format(feed_id))
+    print("Feed successfully added/updated in the database. ID: {}". format(feed_id))
