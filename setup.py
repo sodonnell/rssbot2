@@ -28,16 +28,17 @@ tables['rssbot2_archive'] = (
     ") ENGINE=InnoDB")
 
 class setup:
-    def __init__(self,creds):
+
+    def __init__(self, creds):
         self.conn = mysql.connector.connect(**creds)
 
-    def create_database(self,schema):
+    def create_database(self, schema):
         cursor = self.conn.cursor()
         try:
             print("CREATE DATABASE IF NOT EXISTS {}\n". format(schema), end='')
             cursor.execute("CREATE DATABASE IF NOT EXISTS {} ". format(schema))
         except mysql.connector.Error as err:
-            print("Failed creating database {}: ". format(schema), end='') 
+            print("Failed creating database {}: ". format(schema), end='')
             print("Error output {}: ". format(err.msg), end='')
             #exit(1)
 
@@ -66,7 +67,7 @@ password = None
 database = None
 
 # let user define db credentials via input
-opts, args = getopt.getopt(sys.argv[1:],"h:d:u:p:",["hostname=","username=","password=","database=","help"])
+opts, args = getopt.getopt(sys.argv[1:], "h:d:u:p:", ["hostname=", "username=", "password=", "database=", "help"])
 
 for opt, arg in opts:
     if opt == '--help':
@@ -98,7 +99,7 @@ if database is None:
 
 # write config.py file programmaticlly
 # old-school string type handler. need to modernize this using format() or json encoding.
-config_file = open("config.py","w+")
+config_file = open("config.py", "w+")
 config_file.write("db = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n\t'raise_on_warnings': True\n}\n" % (username, password, hostname, database))
 config_file.close()
 

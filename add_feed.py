@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-import sys, getopt, banner
+import sys
+import getopt
+import banner
 from rssbot2 import rssbot2
 
 url = None
 active = None
 
 # let user define the feed url and active-state via args
-opts, args = getopt.getopt(sys.argv[1:],"adu:",["url=","help"])
+opts, args = getopt.getopt(sys.argv[1:], "adu:", ["url=","help"])
 
 for opt, arg in opts:
     if opt == '--help':
@@ -37,7 +39,7 @@ if active != "Y":
 rssbot = rssbot2()
 rssbot.db_connect()
 
-feed_id = rssbot.add_feed(url,active)
+feed_id = rssbot.add_feed(url, active)
 
 #
 # @todo fix this algorithm. 
