@@ -39,8 +39,8 @@ jobs:
         #pytest
     - name: Install and configure mysql-server
       run: |
-        mysql -u root -e "create database rssbot2;" -p
-        mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;" -p
+        mysql -u root -e "create database rssbot2;" --passwordrssbot
+        mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;" --passwordrssbot
     - name: Setup and Configure rssbot2
       run: |
         python setup.py --help
