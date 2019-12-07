@@ -1,11 +1,9 @@
 name: rssbot2
 
-on: push
+on: [push, pull_request, pull_request_review, release]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
     services:
       mysql: 
