@@ -42,10 +42,10 @@ class rssbot2:
         feedparser.USER_AGENT = agent
 
     def db_connect(self):
-        self.conn = mysql.connector.connect(\
-            host=config.db['host'], \
-            user=config.db['user'], \
-            password=config.db['password'], \
+        self.conn = mysql.connector.connect(
+            host=config.db['host'], 
+            user=config.db['user'], 
+            password=config.db['password'], 
             database=config.db['database'])
         return self.conn
 
@@ -83,7 +83,7 @@ class rssbot2:
         self.feed_count = cursor.rowcount
         if self.feed_count == 0:
             rss = feedparser.parse(link, referrer=self.root_url)
-            try: 
+            try:
                 rss.status
             except ValueError:
                 print('HTTP Status not found.')
