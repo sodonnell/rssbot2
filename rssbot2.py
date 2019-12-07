@@ -43,9 +43,9 @@ class rssbot2:
 
     def db_connect(self):
         self.conn = mysql.connector.connect(
-            host=config.db['host'], 
-            user=config.db['user'], 
-            password=config.db['password'], 
+            host=config.db['host'],
+            user=config.db['user'],
+            password=config.db['password'],
             database=config.db['database'])
         return self.conn
 
