@@ -14,16 +14,15 @@ print("Max Feeds: {}". format(rssbot.max_feeds))
 rssbot.db_connect()
 rssbot.get_feeds()
 
-# iterations
-i = 0
-# links processed
-p = 0
-# links added
-a = 0
-
 feed_count = rssbot.feeds_count
 
 def parse_feeds(rssbot):
+    # iterations
+    i = 0
+    # links processed
+    p = 0
+    # links added
+    a = 0
     if rssbot.feed_count > 0:
         print("Aggregating {} Feeds". format(rssbot.feeds_count))
 
