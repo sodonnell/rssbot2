@@ -23,7 +23,7 @@ a = 0
 
 feed_count = rssbot.feeds_count
 
-if feed_count > 0:
+if feed_count != 0:
     print("Aggregating {} Feeds". format(rssbot.feeds_count))
 
     for feed in rssbot.feeds:
