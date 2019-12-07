@@ -61,11 +61,10 @@ def parse_feeds(rssbot):
                 else:
                     rssbot.deactivate_feed(feed[2])
             i = i + 1
+    print("--------------------------")
+    print("Processed feeds: {}". format(i))
+    print("Processed items: {}". format(p))
+    print("Added new links: {}". format(a))
 
 parse_feeds(rssbot)
 rssbot.conn.close()
-
-print("--------------------------")
-print("Processed feeds: {}". format(i))
-print("Processed items: {}". format(p))
-print("Added new links: {}". format(a))
