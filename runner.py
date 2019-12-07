@@ -50,14 +50,14 @@ if feed_count > 0:
                                         print("\nAdded Record {}". format(id))
                                         print(str(entry.title))
                                         print(str(entry.link))
-                                    a=a + 1
+                                    a = a + 1
                             except: print("Exception thrown while processing item.")
-                            p=p + 1
+                            p = p + 1
                         else:
                             print('Unable to parse item. Bad title or link format.')
             else:
                 rssbot.deactivate_feed(feed[2])
-        i=i+1
+        i = i + 1
 
 rssbot.conn.close()
 
