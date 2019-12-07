@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sysimport
+import sys
 import getopt
 import banner
 import mysql.connector
