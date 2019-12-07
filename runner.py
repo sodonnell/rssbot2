@@ -5,17 +5,16 @@ from rssbot2 import rssbot2
 
 rssbot = rssbot2()
 
-print(banner.rssbot_logo)
-print("--------------------------")
-print("Title: {}". format(rssbot.title))
-print("Agent: {}". format(rssbot.user_agent))
-print("Max Feeds: {}". format(rssbot.max_feeds))
-
-
 def parse_feeds(rssbot):
 
     rssbot.db_connect()
     rssbot.get_feeds()
+
+    print(banner.rssbot_logo)
+    print("--------------------------")
+    print("Title: {}". format(rssbot.title))
+    print("Agent: {}". format(rssbot.user_agent))
+    print("Max Feeds: {}". format(rssbot.max_feeds))
 
     # iterations
     i = 0
