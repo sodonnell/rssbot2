@@ -39,15 +39,15 @@ jobs:
       run: |
         mysql -u root -e "create database rssbot2;" --password=root
         mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;" --password=root
-    - name: Setup and Configure rssbot2
+    - name: Configure rssbot2
       run: |
         python setup.py --help
         python setup.py -u rssbot2 -p rssbot2 -d rssbot2 -h localhost
-    - name: Add some RSS Feeds for ingest testing.
+    - name: Add some RSS feeds.
       run: |
         python add_feed.py -u https://phys.org/rss-feed/ -a
         python add_feed.py -u https://hackaday.com/blog/feed/ -a
         python add_feed.py -u https://www.wired.com/feed/rss -a
-    - name: Execute the rssbot2 runner.
+    - name: Execute the rssbot2 runner and ingest RSS feed data.
       run: |
         python runner.py
