@@ -14,7 +14,9 @@ __author__ = "Sean O'Donnell <sean@seanodonnell.com>"
 __license__ = "GPL"
 __copyright__ = "Copyright 2019, Sean O'Donnell"
 
-import mysql.connector, feedparser, config
+import mysql.connector
+import feedparser
+import config
 
 class rssbot2:
     def __init__(self):

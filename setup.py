@@ -106,7 +106,7 @@ config_file_data = "db = {\
     \n\t'password': '%s',\
     \n\t'host': '%s',\
     \n\t'database': '%s',\
-    \n\t'raise_on_warnings': True\n\}\n"
+    \n\t'raise_on_warnings': True\n}\n"
 
 config_file = open("config.py", "w+")
 config_file.write(config_file_data % (username, password, hostname, database))
