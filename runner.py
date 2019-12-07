@@ -15,11 +15,11 @@ rssbot.db_connect()
 rssbot.get_feeds()
 
 # iterations
-i=0
+i = 0
 # links processed
-p=0
+p = 0
 # links added
-a=0
+a = 0
 
 if rssbot.feeds_count > 0:
     print("Aggregating {} Feeds". format(rssbot.feeds_count))
