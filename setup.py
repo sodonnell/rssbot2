@@ -101,9 +101,14 @@ if database is None:
 
 # write config.py file programmaticlly
 # old-school string type handler. need to modernize this using format() or json encoding.
+config_file_data = "db = {\n\t'user': '%s',\
+    \n\t'password': '%s',\
+    \n\t'host': '%s',\
+    \n\t'database': '%s',\
+    \n\t'raise_on_warnings': True\n}\n"
+
 config_file = open("config.py", "w+")
-file_str = "db = {\n\t'user': '%s',\n\t'password': '%s',\n\t'host': '%s',\n\t'database': '%s',\n\t'raise_on_warnings': True\n}\n"
-config_file.write(file_str % (username, password, hostname, database))
+config_file.write(config_file_data % (username, password, hostname, database))
 config_file.close()
 
 # @todo add sanity checks before proceeding to setup class procedures.
