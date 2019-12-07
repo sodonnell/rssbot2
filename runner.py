@@ -25,9 +25,9 @@ if rssbot.feeds_count > 0:
         rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
         if rssbot.debug:
             print("--------------------------")
-            if rss.feed.has_key('title'):
+            if 'title' in rss.feed:
                 print("RSS Feed Title: {}". format(rss.feed.title))
-            if (rss.feed.has_key('link')):
+            if 'link' in rss.feed:
                 print("RSS Feed URL: {}". format(rss.feed.link))
 
         try: rss.status
@@ -41,7 +41,7 @@ if rssbot.feeds_count > 0:
             if rss.feed.has_key('title'):
                 if len(rss.entries) > 0:
                     for entry in rss.entries:
-                        if entry.has_key('title') and entry.has_key('link'):
+                        if 'title' in entry and 'link' in entry:
 
                             id = rssbot.add_link(feed[2],entry.title,entry.link)
 
