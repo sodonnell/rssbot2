@@ -3,16 +3,20 @@ name: rssbot2
 on: push
 
 jobs:
-  services:
-    mysql: 
-      image: mysql
-      ports:
-        - 3306/tcp
+
 
   build:
 
     runs-on: ubuntu-latest
-
+    services:
+      mysql: 
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: rssbot2
+          MYSQL_DATABASE: rssbot2
+        ports:
+          - 3306/tcp
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.7

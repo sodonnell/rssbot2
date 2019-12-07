@@ -85,18 +85,18 @@ The add_feed.py script is intended to allow you to manually add new RSS Feeds to
 
 It is an interactive shell script that will prompt you to fill-in the blanks for the following:
 
-- RSS Feed URL (i.e. https://somesite.com/feed.rss)
+- RSS Feed URL (i.e. [https://somesite.com/feed.rss](https://somesite.com/feed.rss))
 - Activate Feed (Y/N)
 
 **Usage:**
 
-```
+```bash
 python3 add_feed.py
 ```
 
 The add_feed.py script also supports the arguments:
 
-```
+```bash
 python3 add_feed.py -u https://somesite.com/feed.rss -a
 ```
 
@@ -108,7 +108,7 @@ Ideally, you'd execute the runner.py script on a set interval, via crontab autom
 
 **Usage:**
 
-```
+```bash
 python3 runner.py
 ```
 
