@@ -10,10 +10,10 @@ jobs:
     services:
       mysql: 
         image: mysql:5.7
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
-          MYSQL_ROOT_PASSWORD: rssbot2
-          MYSQL_DATABASE: rssbot2
+        #env:
+        #  MYSQL_ALLOW_EMPTY_PASSWORD: false
+        #  MYSQL_ROOT_PASSWORD: rssbot2
+        #  MYSQL_DATABASE: rssbot2
         ports:
           - 3306/tcp
     steps:
