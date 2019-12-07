@@ -45,7 +45,7 @@ jobs:
       run: |
         python setup.py --help
         python setup.py -u rssbot2 -p rssbot2 -d rssbot2 -h localhost
-    - name: Add some RSS Feeds for testing.
+    - name: Add some RSS Feeds for ingest testing.
       run: |
         python add_feed.py -u https://phys.org/rss-feed/ -a
         python add_feed.py -u https://hackaday.com/blog/feed/ -a
