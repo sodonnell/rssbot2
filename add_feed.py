@@ -8,7 +8,7 @@ url = None
 active = None
 
 # let user define the feed url and active-state via args
-opts, args = getopt.getopt(sys.argv[1:], "adu:", ["url=","help"])
+opts, args = getopt.getopt(sys.argv[1:], "adu:", ["url=", "help"])
 
 for opt, arg in opts:
     if opt == '--help':
@@ -42,9 +42,9 @@ rssbot.db_connect()
 feed_id = rssbot.add_feed(url, active)
 
 #
-# @todo fix this algorithm. 
+# @todo fix this algorithm.
 #
-# - Python needs a default switch/case procedure. 
+# - Python needs a default switch/case procedure.
 # - feedparser and rssbot need better exception handling.
 #
 if feed_id == -1:

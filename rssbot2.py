@@ -82,7 +82,7 @@ class rssbot2:
             else: 
                 http_status = "HTTP Response Status Code: %d" % (rss.status)
                 print(http_status)
-                if rss.feed.has_key('title'):
+                if 'title' in rss.feed:
                     rss.feed.title = rss.feed.title.replace("'",r"\'")
                     cursor = self.conn.cursor()
                     sql = "INSERT IGNORE INTO rssbot2_feeds ( title, link, active) VALUES ('%s','%s','%s')" % (rss.feed.title,link,active)
