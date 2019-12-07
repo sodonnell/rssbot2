@@ -35,7 +35,7 @@ if feed_count > 0:
             if 'link' in rss.feed:
                 print("RSS Feed URL: {}". format(rss.feed.link))
         try: rss.status
-        except: print('HTTP Status not found.')
+        except ValueError: print('HTTP Status not found.')
         else:
             http_status = "HTTP Response Status Code: %d" % (rss.status)
             print(http_status)
@@ -51,7 +51,7 @@ if feed_count > 0:
                                         print(str(entry.title))
                                         print(str(entry.link))
                                     a = a + 1
-                            except: print("Exception thrown while processing item.")
+                            except ValueError: print("Exception thrown while processing item.")
                             p = p + 1
                         else:
                             print('Unable to parse item. Bad title or link format.')
