@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-import mysql.connector, sys, getopt, banner
+import sysimport
+import getopt
+import banner
+import mysql.connector
 from mysql.connector import errorcode
 
 tables = {}
