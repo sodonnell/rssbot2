@@ -85,7 +85,7 @@ class rssbot2:
             rss = feedparser.parse(link, referrer=self.root_url)
             try:
                 rss.status
-            except ValueError:
+            except KeyError:
                 print('HTTP Status not found.')
                 return -1
             else:
