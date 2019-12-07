@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import feedparser, banner
+import feedparser
+import banner
 from rssbot2 import rssbot2
 
 rssbot = rssbot2()
@@ -13,16 +14,18 @@ print("Max Feeds: {}". format(rssbot.max_feeds))
 rssbot.db_connect()
 rssbot.get_feeds()
 
-# iteration cursors (yuck)
-i=0 # iterations
-p=0 # links processed
-a=0 # links added
+# iterations
+i=0
+# links processed
+p=0
+# links added
+a=0
 
 if rssbot.feeds_count > 0:
     print("Aggregating {} Feeds". format(rssbot.feeds_count))
 
     for feed in rssbot.feeds:
-        rss = feedparser.parse(feed[1],referrer=rssbot.root_url)
+        rss = feedparser.parse(feed[1], referrer=rssbot.root_url)
         if rssbot.debug:
             print("--------------------------")
             if 'title' in rss.feed:
@@ -38,12 +41,12 @@ if rssbot.feeds_count > 0:
 
             print(http_status)
 
-            if rss.feed.has_key('title'):
+            if 'title' in rss.feed:
                 if len(rss.entries) > 0:
                     for entry in rss.entries:
                         if 'title' in entry and 'link' in entry:
 
-                            id = rssbot.add_link(feed[2],entry.title,entry.link)
+                            id = rssbot.add_link(feed[2], entry.title, entry.link)
 
                             try:
                                 if id > 0:
