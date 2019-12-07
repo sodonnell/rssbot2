@@ -11,12 +11,12 @@ print("Title: {}". format(rssbot.title))
 print("Agent: {}". format(rssbot.user_agent))
 print("Max Feeds: {}". format(rssbot.max_feeds))
 
-rssbot.db_connect()
-rssbot.get_feeds()
-
-feed_count = rssbot.feeds_count
 
 def parse_feeds(rssbot):
+
+    rssbot.db_connect()
+    rssbot.get_feeds()
+
     # iterations
     i = 0
     # links processed
@@ -65,6 +65,6 @@ def parse_feeds(rssbot):
     print("Processed feeds: {}". format(i))
     print("Processed items: {}". format(p))
     print("Added new links: {}". format(a))
+    rssbot.conn.close()
 
 parse_feeds(rssbot)
-rssbot.conn.close()
