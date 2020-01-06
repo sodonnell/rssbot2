@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import getopt
+import getpass
 import banner
 import mysql.connector
 from mysql.connector import errorcode
@@ -94,7 +95,7 @@ if username is None:
     username = input("Enter your database user name: ")
 
 if password is None:
-    password = input("Enter your database user password: ")
+    password = getpass.getpass("Enter your database user password: ")
 
 if database is None:
     database = input("Enter your database schema name to create, or use existing: ")
