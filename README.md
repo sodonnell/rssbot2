@@ -1,12 +1,10 @@
 # rssbot2
 
+
+
 A modern version of my ancient rssbot module, written in python3.
 
-| Branch | Build Status |
-|-|-|
-| master | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=master)](https://travis-ci.org/sodonnell/rssbot2) |
-| development | [![Build Status](https://travis-ci.org/sodonnell/rssbot2.svg?branch=development)](https://travis-ci.org/sodonnell/rssbot2) |
-
+[![Actions Status](https://github.com/sodonnell/rssbot2/workflows/rssbot2/badge.svg)](https://github.com/sodonnell/rssbot2/actions)
 [![Beerpay](https://beerpay.io/sodonnell/rssbot2/badge.svg?style=flat)](https://beerpay.io/sodonnell/rssbot2)
 ![Github issues](https://img.shields.io/github/issues/sodonnell/rssbot2)
 ![Github forks](https://img.shields.io/github/forks/sodonnell/rssbot2)
