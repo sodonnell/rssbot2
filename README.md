@@ -1,7 +1,5 @@
 # rssbot2
 
-
-
 A modern version of my ancient rssbot module, written in python3.
 
 [![Actions Status](https://github.com/sodonnell/rssbot2/workflows/rssbot2/badge.svg)](https://github.com/sodonnell/rssbot2/actions)

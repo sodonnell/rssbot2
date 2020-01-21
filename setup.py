@@ -102,6 +102,7 @@ if database is None:
 
 # write config.py file programmaticlly
 # old-school string type handler. need to modernize this using format() or json encoding.
+# Perhaps YAML? (i.e. config.yml)
 config_file_data = "db = {\
     \n\t'user': '%s',\
     \n\t'password': '%s',\
