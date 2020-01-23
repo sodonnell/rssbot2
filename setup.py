@@ -61,7 +61,6 @@ class setup:
         cursor.close()
         self.conn.close()
 
-
 print(banner.rssbot_logo)
 
 hostname = None

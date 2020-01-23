@@ -1,9 +1,9 @@
 FROM debian:latest
 
-ENV LANG en_US.utf8
-ENV RSSBOT_VERSION 2.0.0
 ENV HOME /home/rssbot
 ENV HOSTNAME rssbot.local
+ENV LANG en_US.utf8
+ENV RSSBOT_VERSION 2.0.0
 
 RUN apt-get update && rm -rf /var/lib/apt/lists/*
 
@@ -11,34 +11,36 @@ RUN useradd --create-home --home-dir $HOME rssbot \
 	&& mkdir -p $HOME/.rssbot \
 	&& chown -R rssbot:rssbot $HOME
 
-RUN buildDeps=' \
+RUN packages=' \
 		autoconf \
 		automake \
 		bzip2 \
+		ca-certificates \
 		dirmngr \
 		dpkg-dev \
+		git \
 		gnupg \
+		htop \
+		less \
+		libglib2.0-0 \
 		libglib2.0-dev \
 		libncurses-dev \
 		libssl-dev \
 		libtool \
 		lynx \
 		make \
+		net-tools \
 		pkg-config \
-		xz-utils \
 		sudo \
-		ca-certificates \
-		libglib2.0-0 \
         mariadb-server \
         python3 \
         python3-pip \
 		wget \
-		htop \
 		vim \
-		git \
+		xz-utils \
 	' \
 	&& set -x \
-	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends
+	&& apt-get update && apt-get install -y $packages --no-install-recommends
 	#&& rm -rf /var/lib/apt/lists/* \
 	# && /etc/init.d/mysql start \
 	# # install rssbot2 release
