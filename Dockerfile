@@ -32,6 +32,7 @@ RUN packages=' \
         mariadb-server \
         python3 \
         python3-pip \
+		python3-setuptools \
 		wget \
 		vim \
 		xz-utils \
