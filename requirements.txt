@@ -1,4 +1,4 @@
-setuptools==45.1.0docker
+setuptools==45.1.0
 mysql-connector-python==8.0.16
 configobj==5.0.6
 feedparser==5.2.1
