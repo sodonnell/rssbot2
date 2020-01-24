@@ -13,6 +13,7 @@ RUN packages=' \
 		automake \
 		bzip2 \
 		ca-certificates \
+		cron \
 		dirmngr \
 		dpkg-dev \
 		git \
@@ -41,11 +42,10 @@ RUN packages=' \
 	&& apt-get update && apt-get install -y $packages --no-install-recommends
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
-
+RUN echo "rssbot ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/90-rssbot
 # configure mysql db+user
-RUN /etc/init.d/mysql start \
-    && mysql -u root -e "create database rssbot2;" \
-    && mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;"
+RUN sed 's/bind-address/#bind-address/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+RUN service mysql start && mysql -u root -e "create database rssbot2; create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;"
 
 # configure system user account
 RUN useradd -rm -d $HOME -s /bin/bash -g root -G sudo -u 1000 rssbot -p "$(openssl passwd -1 rssbot)"
@@ -53,17 +53,18 @@ USER rssbot
 WORKDIR $HOME
 
 # setup rssbot2
-RUN git clone https://github.com/sodonnell/rssbot2.git \
-&& cd rssbot2 \
-&& git checkout docker \
-&& git pull origin docker \
-&& python3 -m pip install --upgrade pip \
-&& pip3 install -r requirements.txt \
-&& python3 setup.py -h localhost -u rssbot2 -d rssbot2 -p rssbot2 \
-&& python3 add_feed.py -a -u https://phys.org/rss-feed/ \
-&& python3 add_feed.py -a -u https://hackaday.com/blog/feed/ \
-&& python3 add_feed.py -a -u https://www.wired.com/feed/rss \
-&& python3 runnser.py \
-&& crontab crontab
+RUN sudo service mysql start \
+	&& git clone https://github.com/sodonnell/rssbot2.git \
+	&& cd rssbot2 \
+	&& git checkout docker \
+	&& git pull origin docker \
+	&& python3 -m pip install --upgrade pip \
+	&& pip3 install -r requirements.txt \
+	&& python3 setup.py -h localhost -u rssbot2 -d rssbot2 -p rssbot2 \
+	#&& python3 add_feed.py -a -u https://phys.org/rss-feed/ \
+	#&& python3 add_feed.py -a -u https://hackaday.com/blog/feed/ \
+	#&& python3 add_feed.py -a -u https://www.wired.com/feed/rss \
+	#&& python3 runnser.py \
+	&& crontab crontab
 
 CMD ["bash"]
