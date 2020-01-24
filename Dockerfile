@@ -55,6 +55,7 @@ WORKDIR $HOME
 RUN git clone https://github.com/sodonnell/rssbot2.git \
 && cd rssbot2 \
 && git checkout docker \
+&& git pull origin docker \
 && pip3 install -r requirements.txt \
 && python3 setup.py -h localhost -u rssbot2 -d rssbot2 -p rssbot2 \
 && python3 add_feed.py -a -u https://phys.org/rss-feed/ \
