@@ -46,25 +46,21 @@ RUN /etc/init.d/mysql start \
     && mysql -u root -e "create database rssbot2;" \
     && mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;"
 
-	# # install rssbot2 release
-	# && wget "https://github.com/sodonnell/rssbot2/archive/v${RSSBOT_VERSION}.tar.gz" -O /tmp/rssbot.v${RSSBOT_VERSION}.tar.xz \
-	# && mkdir -p $HOME/rssbot2 \
-	# && tar -xf /tmp/rssbot.v${RSSBOT_VERSION}.tar.xz -C $HOME/rssbot2 \
-	# && rm /tmp/rssbot.v${RSSBOT_VERSION}.tar.xz \
-	# && cd $HOME/rssbot2 \
-	#&& rm -rf /var/lib/apt/lists/* \
-
-    # # setup rssbot
-	# && pip3 install -r requirements.txt \
-	# && ./setup.py \
-	# 	-u rssbot2 \
-	# 	-p rssbot2 \
-	# 	-h localhost \
-	# 	-d rssbot2
-
 # configure system user account
 RUN useradd -rm -d $HOME -s /bin/bash -g root -G sudo -u 1000 rssbot -p "$(openssl passwd -1 rssbot)"
 USER rssbot
 WORKDIR $HOME
+
+# setup rssbot2
+RUN git clone https://github.com/sodonnell/rssbot2.git \
+&& cd rssbot2 \
+&& git checkout docker \
+&& pip3 install -r requirements.txt \
+&& python3 setup.py -h localhost -u rssbot2 -d rssbot2 -p rssbot2 \
+&& python3 add_feed.py -a -u https://phys.org/rss-feed/ \
+&& python3 add_feed.py -a -u https://hackaday.com/blog/feed/ \
+&& python3 add_feed.py -a -u https://www.wired.com/feed/rss \
+&& python3 runnser.py \
+&& crontab crontab
 
 CMD ["bash"]
