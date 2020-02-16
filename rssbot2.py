@@ -59,7 +59,7 @@ class rssbot2:
         cursor.close()
 
     def deactivate_feed(self, id):
-        sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = '{}'". format(id)
+        sql = "UPDATE rssbot2_feeds SET active = 'N' WHERE id = {}". format(id)
         print(sql)
         cursor = self.conn.cursor()
         cursor.execute(sql)
