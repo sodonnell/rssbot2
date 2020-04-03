@@ -82,6 +82,8 @@ class rssbot2:
         self.feed_count = cursor.rowcount
         if self.feed_count == 0:
             rss = feedparser.parse(link, referrer=self.root_url)
+            if 'status' in rss:
+                print('ok')
             try:
                 rss.status
             except KeyError:
