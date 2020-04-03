@@ -37,6 +37,7 @@ jobs:
         #pytest
     - name: Configure MySQL Database
       run: |
+        sudo systemctl start mysql
         mysql -u root -e "create database rssbot2;" --password=root
         mysql -u root -e "create user rssbot2 identified by 'rssbot2'; grant all on rssbot2.* to rssbot2;" --password=root
     - name: Configure rssbot2
