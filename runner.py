@@ -4,7 +4,7 @@ import banner
 from rssbot2 import rssbot2
 
 rssbot = rssbot2()
-
+rssbot.db_connect()
 rssbot.get_feeds()
 
 print(banner.rssbot_logo)
