@@ -18,7 +18,6 @@ import mysql.connector
 import feedparser
 import config
 
-
 class rssbot2:
     def __init__(self):
         # SET DEFAULT OBJECT PARAMS
